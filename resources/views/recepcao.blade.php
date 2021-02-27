@@ -124,11 +124,14 @@
                                                             <div class="form-group"><label for="city"><strong>Título</strong><br></label><input class="form-control" type="text" id="city-1" placeholder="Los Angeles" name="city" style="width: 100%;"></div>
                                                         </form>
                                                     </div>
-                                                    <div class="modal-footer justify-content-center"><button class="btn btn-warning" data-dismiss="modal" style="border-color: #e75c25;background: #e75c25;" type="button">Voltar</button><button class="btn btn-warning" data-dismiss="modal" style="background: #e75c25;border-color: #e75c25;" type="button">Salvar</button></div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <button class="btn btn-warning" data-dismiss="modal" style="border-color: #e75c25;background: #e75c25;" type="button">Voltar</button>
+                                                        <button class="btn btn-warning" data-dismiss="modal" style="background: #e75c25;border-color: #e75c25;" type="button">Salvar</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="btn btn-primary btn-sm d-none float-right d-sm-inline-block" role="button" style="color: rgb(57,42,42);border-radius: 100%;margin-top: -5px;width: 31px;background: #e75c25;border-color: #e75c25;" data-toggle="modal" data-target="#exampleModal-1"><i class="icon ion-android-add fa-sm" style="color: rgb(255,255,255);"></i></a>
+                                        <a class="btn btn-primary btn-sm float-right d-sm-inline-block" role="button" style="color: rgb(57,42,42);border-radius: 100%;margin-top: -5px;width: 31px;background: #e75c25;border-color: #e75c25;" data-toggle="modal" data-target="#exampleModal-1"><i class="icon ion-android-add fa-sm" style="color: rgb(255,255,255);"></i></a>
                                     </div>
                                     <h6 class="text-primary font-weight-bold m-0" style="color: #e75c25! important;">Lista de Afazeres</h6>
                                 </div>

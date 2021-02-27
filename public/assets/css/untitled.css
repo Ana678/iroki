@@ -63,3 +63,8 @@ body, html {
   margin-left: -15px;
 }
 
+@media (max-width: 750px) {
+  .masthead {
+	background-image: linear-gradient(180deg,#b7cdc9 10%,#68aea1);
+  }
+}

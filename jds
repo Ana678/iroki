@@ -1,0 +1,42 @@
+[33mcommit 7826e33de6b546c1066c4d088dd2e7afeed145c3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 8fe9526 0fc14ed
+Author: Ana Carolina <anacarolinaneta@hotmail.com>
+Date:   Fri Feb 26 15:33:08 2021 -0300
+
+    Merge https://github.com/Ana678/iroki
+
+[33mcommit 8fe9526f51f11eb5f0af611e51c1a2c09d990e58[m
+Author: Ana Carolina <anacarolinaneta@hotmail.com>
+Date:   Fri Feb 26 15:29:45 2021 -0300
+
+    resolver problema
+
+[33mcommit c3e83589e946f68155e90138a31c6607fdbd383b[m
+Author: Ana Carolina <anacarolinaneta@hotmail.com>
+Date:   Fri Feb 26 15:16:54 2021 -0300
+
+    adicionar template
+
+[33mcommit 0fc14ed99523f3a4a287eb90b2a673751e9d1a93[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Ana678 <61561306+Ana678@users.noreply.github.com>
+Date:   Wed Feb 17 21:44:36 2021 -0300
+
+    Rename procfile to Procfile
+
+[33mcommit 3f4a83de867c089040d55c094c6b92b6458cea83[m
+Author: Ana Carolina <anacarolinaneta@hotmail.com>
+Date:   Wed Feb 17 21:35:26 2021 -0300
+
+    procfile adicionado
+
+[33mcommit a52841c68aa9f4eda988cbe7359f7e0395929dbe[m
+Author: Ana Carolina <anacarolinaneta@hotmail.com>
+Date:   Wed Feb 17 21:32:26 2021 -0300
+
+    procfile adicionado
+
+[33mcommit 157c715f802d5e6756d69c6b454a2f0a51fd8931[m
+Author: Ana Carolina <anacarolinaneta@hotmail.com>
+Date:   Wed Feb 17 16:39:27 2021 -0300
+
+    primeiro commit
