@@ -15,11 +15,7 @@ use App\Http\Controllers\EventController;
 
 Route::get('/', [EventController::class, 'index']);
 
-Route::get('login', [EventController::class, 'login']);
-
-Route::get('cadastro', [EventController::class, 'cadastro']);
-
-Route::get('validacao', [EventController::class, 'validacao']);
+Route::post('cadastro', [EventController::class, 'cadastro']);
 
 Route::get('cadastroFamilia', [EventController::class, 'cadastroFamilia']);
 
@@ -27,7 +23,7 @@ Route::get('inserirEmail', [EventController::class, 'inserirEmail']);
 
 Route::get('novaSenha', [EventController::class, 'novaSenha']);
 
-Route::get('primeiroLogin', [EventController::class, 'PrimeiroLogin']);
+Route::get('primeiroLogin', [EventController::class, 'primeiroLogin']);
 
 Route::get('primeiroLogin2', [EventController::class, 'primeiroLogin2']);
 
@@ -39,4 +35,4 @@ Route::get('tableMaster', [EventController::class, 'tableMaster']);
 
 Route::get('tableSimples', [EventController::class, 'tableSimples']);
 
-Route::get('recepcao', [EventController::class, 'recepcao']);
+Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');

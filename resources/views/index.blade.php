@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item nav-link js-scroll-trigger">
-                        <a class="nav-link js-scroll-trigger" href="cadastro" style="color: #42424c;font-size: 19px;font-family: Poppins, sans-serif;">cadastro</a>
+                        <a class="nav-link js-scroll-trigger" href="register" style="color: #42424c;font-size: 19px;font-family: Poppins, sans-serif;">cadastro</a>
                     </li>
                     <li class="nav-item nav-link js-scroll-trigger" style="border-left-color: #42424c;">
                         <a class="nav-link js-scroll-trigger" href="login" style="color: #42424c;border-radius: 0;font-family: Poppins, sans-serif;border-style: none;border-top-style: none;border-top-color: rgb(52,58,64);border-right-style: solid;border-right-color: #42424c;border-bottom-style: solid;border-bottom-color: #42424c;border-left-style: none;border-left-color: #42424c;"><strong>log in</strong>
@@ -46,7 +46,7 @@
                 <div class="col"></div>
                 <div class="col-lg-6 offset-lg-5 mx-auto">
                     <p class="text-right intro-text" style="color: #42424c;font-size: 30px;font-family: Poppins, sans-serif;font-weight: 700;line-height: 1.4;"><strong>Decida entre o que você quer e o que pode comprar.</strong></p>
-                    <p class="text-right intro-text" style="font-family: Poppins, sans-serif;font-size: 20px;color: #42424c;">A solução perfeita para você que deseja organizar sua lista de compras para o final do mês.</p><a class="btn btn-link float-right btn-circle" role="button" href="login.html" style="color: #42424c;padding-top: 3px;padding-bottom: 3px;margin-right: 20%;border-top-color: rgb(52,58,64);border-right-color: rgb(52,58,64);border-bottom-color: rgb(52,58,64);border-left-color: #42424c;font-family: Poppins, sans-serif;" align="right"><i class="fa fa-angle-double-right animated" style="color: #42424c;"></i></a>
+                    <p class="text-right intro-text" style="font-family: Poppins, sans-serif;font-size: 20px;color: #42424c;">A solução perfeita para você que deseja organizar sua lista de compras para o final do mês.</p><a class="btn btn-link float-right btn-circle" role="button" href="login" style="color: #42424c;padding-top: 3px;padding-bottom: 3px;margin-right: 20%;border-top-color: rgb(52,58,64);border-right-color: rgb(52,58,64);border-bottom-color: rgb(52,58,64);border-left-color: #42424c;font-family: Poppins, sans-serif;" align="right"><i class="fa fa-angle-double-right animated" style="color: #42424c;"></i></a>
                 </div>
             </div>
         </div>

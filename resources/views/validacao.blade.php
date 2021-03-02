@@ -26,8 +26,26 @@
                             </div>
                             <form class="user">
                                 <div class="form-group row" style="margin: 36px -12px;">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><a href="cadastroFamilia.html"><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C23;border-color: #E75C25;">Cadastrar minha família</button></a></div>
-                                    <div class="col-sm-6"><a href="index.html"><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C25;border-color: #E75C25;">Acessar o Sistema<br></button></a></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <a href="cadastroFamilia">
+                                            <button class="btn btn-primary btn-block text-white btn-user" 
+                                                    type="button" 
+                                                    style="background: #E75C23;border-color: #E75C25;"
+                                            >
+                                                Cadastrar minha família
+                                            </button>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="dashboard">
+                                            <button class="btn btn-primary btn-block text-white btn-user" 
+                                                    type="button" 
+                                                    style="background: #E75C25;border-color: #E75C25;"
+                                            >
+                                                Acessar o Sistema<br>
+                                            </button>
+                                        </a>
+                                    </div>
                                 </div>
                                 <hr>
                             </form>

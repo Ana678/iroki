@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -17,11 +18,12 @@ class EventController extends Controller
     }
 
     public function cadastro(Request $request){
-        $register = new Event;
+        
+        
+        $register = new User;
+        $register->name = $request->name;
         $register->email = $request->email;
-        $register->senha = $request->senha;
-        $register->nome = $request->nome;
-        $register->telefone = $request->telefone;
+        $register->password = $request->password;
 
         //Image upload
         if($request->hasFile('image') && $request->file('image')->isValid()){
@@ -30,14 +32,14 @@ class EventController extends Controller
             $extension = $requestImage->extension();
 
             $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) . "." . $extension;
-            $requestImage->move(public_path('img/events'), $imageName);
-            $register->image = $imageName;
+            $requestImage->move(public_path('assets/img/avatars'), $imageName);
+            $register->profile_photo_path = $imageName;
             
         }
-    }
 
-    public function validacao()
-    {
+        $register->master = 1;
+        $register->save();
+        
         return view('validacao');
     }
 
@@ -48,7 +50,7 @@ class EventController extends Controller
 
     public function inserirEmail()
     {
-        return view('inserirEmail');
+        return view('login.inserirEmail');
     }
 
     public function novaSenha()
@@ -56,9 +58,9 @@ class EventController extends Controller
         return view('novaSenha');
     }
 
-    public function PrimeiroLogin()
+    public function primeiroLogin()
     {
-        return view('PrimeiroLogin');
+        return view('login.primeiroLogin');
     }
 
     public function primeiroLogin2()
@@ -73,21 +75,25 @@ class EventController extends Controller
 
     public function profile()
     {
-        return view('profile');
+        $sessao = auth()->user();
+        return view('profile', ['sessao' => $sessao]);
     }
 
     public function tableMaster()
     {
-        return view('tableMaster');
+        $sessao = auth()->user();
+        return view('tableMaster', ['sessao' => $sessao]);
     }
 
     public function tableSimples()
     {
-        return view('tableSimples');
+        $sessao = auth()->user();
+        return view('tableSimples', ['sessao' => $sessao]);
     }
 
-    public function recepcao()
+    public function dashboard()
     {
-        return view('recepcao');
+        $sessao = auth()->user();
+        return view('dashboard', ['sessao' => $sessao]);
     }
 }
