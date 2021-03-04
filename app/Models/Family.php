@@ -12,4 +12,13 @@ class Family extends Model
     public function users(){
         return $this->hasMany('App\Models\User');
     }
+    public function products(){
+        return $this->hasMany('App\Models\Product');
+    }
+    public function messages(){
+        return $this->hasMany('App\Models\Message');
+    }
+    public function tasks(){
+        return $this->hasMany('App\Models\Task');
+    }
 }

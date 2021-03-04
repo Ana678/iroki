@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('profile_photo_path')->nullable();
             $table->boolean('master');
-            $table->foreignId('fam_id')->nullable();
+            $table->foreignId('family_id')->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
