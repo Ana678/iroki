@@ -19,8 +19,6 @@ class CreateTasksTable extends Migration
             $table->dateTime('date');
             $table->string('description')->nullable();
             $table->foreignId('family_id')->constrained();
-            /*$table->unsignedBigInteger('family_id');
-            $table->foreign('family_id')->references('id')->on('families');*/
             $table->timestamps();
         });
     }
