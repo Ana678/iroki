@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class EventController extends Controller
 {
@@ -23,7 +24,7 @@ class EventController extends Controller
         $register = new User;
         $register->name = $request->name;
         $register->email = $request->email;
-        $register->password = $request->password;
+        $register->password = Hash::make($request->password);
 
         //Image upload
         if($request->hasFile('image') && $request->file('image')->isValid()){
