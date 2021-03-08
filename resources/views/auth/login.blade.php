@@ -10,6 +10,11 @@
                     <div class="col">
                         <div class="p-5">
                             <div class="text-center"></div>
+                                @if (session('status'))
+                                    <div class="mb-4 font-medium text-sm text-green-600">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
                             <form class="user" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
@@ -80,14 +85,16 @@
                                 <hr>
                             </form>
                                 <div class="text-center">
+                                @if (Route::has('password.request'))
                                     <a class="small" href="inserirEmail" style="color: #68aea1;">
                                         <br>
                                         {{ __('Esqueceu a senha?') }}
                                         <br>
                                     </a>
+                                @endif    
                                 </div>
                             <div class="text-center">
-                                <a class="small" href="cadastro" style="color: #68aea1;">
+                                <a class="small" href="register" style="color: #68aea1;">
                                     Não tem uma conta? Cadastre-se aqui.
                                     <br>
                                     <br>

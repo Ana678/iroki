@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+    
 </head>
 
 <body class="bg-gradient-primary" style="background-color: #4e73df;background-image: linear-gradient(180deg,#b7cdc9 10%,#68aea1);background-size: cover;">
@@ -72,12 +73,9 @@
                                         </small>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input  class="btn btn-primary btn-block text-white btn-user" 
-                                                type="file" 
-                                                style="background: rgba(231,92,37,0.77);border-color: #E75C25;"
-                                                name="image"
-                                        >
-                                        Selecionar<br>
+                                        <label class="btn btn-primary btn-block text-white btn-user" style="background: rgba(231,92,37,0.77);border-color: #E75C25;"> Selecionar
+                                            <input class="d-none" type="file" name="image">
+                                        </label>
                                     </div>
                                 </div>
                                 <a href="validacao">

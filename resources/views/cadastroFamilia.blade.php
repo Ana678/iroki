@@ -35,8 +35,16 @@
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repita a senha" name="password_repeat"></div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><small class="form-text text-center text-muted" style="margin: 12px 0px 0px;">Insira Uma Foto de Perfil:</small></div>
-                                    <div class="col-sm-6"><button class="btn btn-primary btn-block text-white btn-user" type="file" style="background: rgba(231,92,37,0.7);border-color: rgb(255, 255, 255);">Selecionar<br></button></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <small class="form-text text-center text-muted" style="margin: 12px 0px 0px;">
+                                            Insira Uma Foto de Perfil:&nbsp;
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="btn btn-primary btn-block text-white btn-user" style="background: rgba(231,92,37,0.77);border-color: #E75C25;"> Selecionar
+                                            <input class="d-none" type="file" name="image">
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">Registrar Este e Outro Membro</button></div>
