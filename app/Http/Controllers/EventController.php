@@ -124,10 +124,8 @@ class EventController extends Controller
     public function updateProfileImage(Request $request){
 
         $sessao = auth()->user();
+    
 
-        $image = $request->all();
-
-        //Image upload
         if($request->hasFile('image') && $request->file('image')->isValid()){
 
             $requestImage = $request->image;
@@ -137,14 +135,10 @@ class EventController extends Controller
 
             $requestImage->move(public_path('assets/img/avatars'), $imageName);
 
-            $sessao->profile_photo_path = $imageName;
-
-            
-            User::findOrFail($sessao->id)->update($sessao->profile_photo_path);
+            User::where('id',$sessao->id)->update(['profile_photo_path' => $imageName]);
         }
-        
-        
-        return view('profile', ['sessao' => $sessao]);
+
+        return redirect('profile');
         
     }
 }
