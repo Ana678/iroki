@@ -81,12 +81,10 @@
                                         </label>
                                     </div>
                                 </div>
-                                <a href="validacao">
                                     <button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C25;border-color: #E75C25;">
                                         {{ __('Registrar conta') }}
                                         <br>
                                     </button>
-                                </a>
                                 <hr>
                             </form>
                             <div class="text-center"><a class="small" href="/" style="color: #68aea1;"><br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-chevron-double-left">

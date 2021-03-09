@@ -11,13 +11,12 @@
                     <div class="card-body text-center shadow">
                         <img class="rounded-circle mb-3 mt-4" src="assets/img/avatars/{{$sessao->profile_photo_path}}" width="160" height="160">
                         <div class="mb-3">
-                            <form action="updateProfileImage" name="photo" method="POST">
+                            <form action="updateProfileImage" name="photo" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
                                     Alterar Imagem De Perfil
-                                    <input class="d-none" type="file" name="image" onchange="document.forms['photo'].submit()" />
+                                    <input class="d-none" type="file" name="image" onchange="document.forms['photo'].submit()">
                                 </label>
-                                
                             </form>
                         </div>
                     </div>

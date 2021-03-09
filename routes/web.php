@@ -23,7 +23,6 @@ Route::get('novaSenha', [EventController::class, 'novaSenha']);
 
 Route::post('cadastro', [EventController::class, 'cadastro']);
 
-
 Route::get('primeiroLogin', [EventController::class, 'primeiroLogin'])->middleware('auth');
 
 Route::get('primeiroLogin2', [EventController::class, 'primeiroLogin2'])->middleware('auth');
