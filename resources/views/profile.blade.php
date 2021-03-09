@@ -9,7 +9,12 @@
             <div class="col-lg-4" style="margin-top: 16px;">
                 <div class="card mb-3">
                     <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image2.jpeg" width="160" height="160">
-                        <div class="mb-3"><button class="btn btn-primary btn-sm" type="button" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">Alterar Imagem</button></div>
+                        <div class="mb-3">
+                            <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
+                                 Alterar Imagem De Perfil
+                                 <input class="d-none" type="file" name="arquivo" />
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,15 +27,18 @@
                                 <form>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="username"><strong>Nome</strong></label><input class="form-control" type="text" id="username-1" placeholder="John" name="name"></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group"><label for="last_name" style="color: rgb(133, 135, 150);"><strong>Sobrenome</strong></label><input class="form-control" type="text" id="last_name-1" placeholder="Doe" name="last_name"></div>
+                                            <div class="form-group">
+                                                <label for="username"><strong>Nome</strong></label>
+                                                <input class="form-control" type="text" id="username-1" placeholder="John" name="name" value="">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-group"><label for="email"><strong>Email</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                            <div class="form-group">
+                                                <label for="email"><strong>Email</strong></label>
+                                                <input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" value="">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group text-center"><button class="btn btn-primary btn-sm" type="submit" style="background: #e75c25;border-color: #e75c25;">Editar Dados</button></div>
@@ -45,7 +53,12 @@
             <div class="col-xl-4" style="margin-top: 16px;">
                 <div class="card align-items-center" style="border-color: transparent;background: transparent;">
                     <div class="card-body text-center shadow"><img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/depositphotos_50696813-stock-photo-family-playing-soccer-in-park.jpg">
-                        <div class="mb-3"><button class="btn btn-primary btn-sm" type="button" style="background: #e75c25;border-color: rgb(231,92,37);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">Alterar Imagem</button></div>
+                        <div class="mb-3">
+                            <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
+                                 Alterar Imagem Da Família
+                                 <input class="d-none" type="file" name="arquivo" />
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
