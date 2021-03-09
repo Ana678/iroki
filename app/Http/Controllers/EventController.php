@@ -45,10 +45,13 @@ class EventController extends Controller
         if($request->hasFile('image') && $request->file('image')->isValid()){
 
             $requestImage = $request->image;
+
             $extension = $requestImage->extension();
 
             $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) . "." . $extension;
+
             $requestImage->move(public_path('assets/img/avatars'), $imageName);
+
             $register->profile_photo_path = $imageName;
             
         }
@@ -115,5 +118,33 @@ class EventController extends Controller
     {
         $sessao = auth()->user();
         return view('dashboard', ['sessao' => $sessao]);
+    }
+
+
+    public function updateProfileImage(Request $request){
+
+        $sessao = auth()->user();
+
+        $image = $request->all();
+
+        //Image upload
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) . "." . $extension;
+
+            $requestImage->move(public_path('assets/img/avatars'), $imageName);
+
+            $sessao->profile_photo_path = $imageName;
+
+            
+            User::findOrFail($sessao->id)->update($sessao->profile_photo_path);
+        }
+        
+        
+        return view('profile', ['sessao' => $sessao]);
+        
     }
 }

@@ -8,12 +8,17 @@
         <div class="row mb-3">
             <div class="col-lg-4" style="margin-top: 16px;">
                 <div class="card mb-3">
-                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image2.jpeg" width="160" height="160">
+                    <div class="card-body text-center shadow">
+                        <img class="rounded-circle mb-3 mt-4" src="assets/img/avatars/{{$sessao->profile_photo_path}}" width="160" height="160">
                         <div class="mb-3">
-                            <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
-                                 Alterar Imagem De Perfil
-                                 <input class="d-none" type="file" name="arquivo" />
-                            </label>
+                            <form action="updateProfileImage" name="photo" method="POST">
+                                @csrf
+                                <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
+                                    Alterar Imagem De Perfil
+                                    <input class="d-none" type="file" name="image" onchange="document.forms['photo'].submit()" />
+                                </label>
+                                
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -29,7 +34,7 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="username"><strong>Nome</strong></label>
-                                                <input class="form-control" type="text" id="username-1" placeholder="John" name="name" value="">
+                                                <input class="form-control" type="text" id="username-1" placeholder="John" name="name" value="{{$sessao->name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -37,7 +42,7 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="email"><strong>Email</strong></label>
-                                                <input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" value="">
+                                                <input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" value="{{$sessao->email}}">
                                             </div>
                                         </div>
                                     </div>

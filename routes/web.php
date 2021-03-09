@@ -31,6 +31,8 @@ Route::get('normalLogin', [EventController::class, 'normalLogin'])->middleware('
 
 Route::get('profile', [EventController::class, 'profile'])->middleware('auth');
 
+Route::post('updateProfileImage', [EventController::class, 'updateProfileImage'])->middleware('auth');
+
 Route::get('tableMaster', [EventController::class, 'tableMaster'])->middleware('auth');
 
 Route::get('tableSimples', [EventController::class, 'tableSimples'])->middleware('auth');
