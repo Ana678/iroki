@@ -77,7 +77,7 @@
                                             &nbsp;{{ $sessao->name }}
                                         </span>
                                         <img class="border rounded-circle img-profile"
-                                            src="assets/img/avatars/avatar1.jpeg">
+                                            src="assets/img/avatars/{{$sessao->profile_photo_path}}">
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
                                         <a  class="dropdown-item" href="profile">

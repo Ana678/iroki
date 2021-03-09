@@ -28,7 +28,7 @@
                                 </h4>
                             </div>
                             <x-jet-validation-errors class="mb-4" />
-                            <form class="user" method="POST" action="register" enctype="multipart/form-data">
+                            <form class="user" method="POST" action="cadastro" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <input  class="form-control form-control-user" 
