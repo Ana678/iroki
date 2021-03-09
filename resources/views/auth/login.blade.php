@@ -59,18 +59,10 @@
                                 <div class="custom-control custom-checkbox small" style="margin: 20px 0px;padding: 0px;">
                                     <div>
                                         <fieldset style="padding: 0px 15px;">
-                                            <div class="custom-control custom-checkbox" 
-                                                id="remember_me" 
-                                                name="remember"
-                                            >
-                                                <input  type="checkbox" 
-                                                        id="customCheck2" 
-                                                        class="custom-control-input"
-                                                >
-                                                <label  class="custom-control-label" 
-                                                        for="customCheck2"
-                                                >
-                                                    {{ __('Permanecer Logado') }}
+                                            <div class="block mt-4">
+                                                <label for="remember_me" class="flex items-center">
+                                                    <x-jet-checkbox id="remember_me" name="remember" />
+                                                    <span class="ml-2 text-sm text-gray-600">{{ __('Permanecer Logado') }}</span>
                                                 </label>
                                             </div>
                                         </fieldset>

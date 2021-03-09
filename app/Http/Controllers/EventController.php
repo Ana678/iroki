@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Family;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Jetstream\Jetstream;
 
 class EventController extends Controller
 {
@@ -20,10 +23,22 @@ class EventController extends Controller
 
     public function cadastro(Request $request){
         
-        
         $register = new User;
+
+        $novaFamilia = new Family;
+
+        $novaFamilia->save();
+
+        $register->family_id = Family::select('id')->orderBy('id', 'DESC')->first()->id;
+        
         $register->name = $request->name;
         $register->email = $request->email;
+
+
+        if($request->password != $request->password_confirmation){
+            return view('auth.register', ['message' => "As senhas não coincidem"]);
+        }
+        
         $register->password = Hash::make($request->password);
 
         //Image upload
@@ -51,7 +66,7 @@ class EventController extends Controller
 
     public function inserirEmail()
     {
-        return view('login.inserirEmail');
+        return view('login.recuperarSenha');
     }
 
     public function novaSenha()
@@ -59,8 +74,12 @@ class EventController extends Controller
         return view('novaSenha');
     }
 
-    public function primeiroLogin()
-    {
+    public function primeiroLogin(){
+        
+        $sessao = auth()->user();
+
+        $sessao->id;
+
         return view('login.primeiroLogin');
     }
 

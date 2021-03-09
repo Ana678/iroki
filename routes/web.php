@@ -15,24 +15,24 @@ use App\Http\Controllers\EventController;
 
 Route::get('/', [EventController::class, 'index']);
 
-Route::post('cadastro', [EventController::class, 'cadastro']);
-
 Route::get('cadastroFamilia', [EventController::class, 'cadastroFamilia']);
 
-Route::get('inserirEmail', [EventController::class, 'inserirEmail']);
+Route::get('recuperarSenha', [EventController::class, 'recuperarSenha']);
 
 Route::get('novaSenha', [EventController::class, 'novaSenha']);
 
-Route::get('primeiroLogin', [EventController::class, 'primeiroLogin']);
 
-Route::get('primeiroLogin2', [EventController::class, 'primeiroLogin2']);
 
-Route::get('normalLogin', [EventController::class, 'normalLogin']);
+Route::get('primeiroLogin', [EventController::class, 'primeiroLogin'])->middleware('auth');
 
-Route::get('profile', [EventController::class, 'profile']);
+Route::get('primeiroLogin2', [EventController::class, 'primeiroLogin2'])->middleware('auth');
 
-Route::get('tableMaster', [EventController::class, 'tableMaster']);
+Route::get('normalLogin', [EventController::class, 'normalLogin'])->middleware('auth');
 
-Route::get('tableSimples', [EventController::class, 'tableSimples']);
+Route::get('profile', [EventController::class, 'profile'])->middleware('auth');
+
+Route::get('tableMaster', [EventController::class, 'tableMaster'])->middleware('auth');
+
+Route::get('tableSimples', [EventController::class, 'tableSimples'])->middleware('auth');
 
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');

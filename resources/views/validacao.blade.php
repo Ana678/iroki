@@ -32,12 +32,12 @@
                                                     type="button" 
                                                     style="background: #E75C23;border-color: #E75C25;"
                                             >
-                                                Cadastrar minha família
+                                                Inserir membro(s) na família
                                             </button>
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <a href="dashboard">
+                                        <a href="primeiroLogin">
                                             <button class="btn btn-primary btn-block text-white btn-user" 
                                                     type="button" 
                                                     style="background: #E75C25;border-color: #E75C25;"
@@ -49,7 +49,9 @@
                                 </div>
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small" href="forgot-password.html" style="color: rgb(90,92,105);"><br>Você também pode cadastrar sua família pela tela do seu perfil!<br></a></div>
+                            <div class="text-center">
+                                <br>(Você também pode inserir membros da sua família pela tela do seu perfil!)<br>
+                            </div>
                         </div>
                     </div>
                 </div>
