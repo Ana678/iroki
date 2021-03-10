@@ -50,7 +50,13 @@
         <div class="row">
             <div class="col-lg-6 col-xl-6">
                 <div class="card shadow mb-4 align-items-center">
-                    <div class="card-body text-center"><img class="img-no-padding img-responsive img-fluid" src="assets/img/depositphotos_50696813-stock-photo-family-playing-soccer-in-park.jpg"></div>
+                    <div class="card-body text-center">
+                        @if (@isset($family->family_photo_path))
+                            <img class="img-no-padding img-responsive img-fluid" src="assets/img/family/{{$family->family_photo_path}}">    
+                        @else
+                            <img class="img-no-padding img-responsive img-fluid" src="assets/img/standardFamily.jpg">
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 mb-4">

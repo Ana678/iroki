@@ -97,7 +97,12 @@ class EventController extends Controller{
     public function dashboard()
     {
         $sessao = auth()->user();
-        return view('dashboard', ['sessao' => $sessao]);
+        $family = Family::where('id', $sessao->family_id)->first();
+
+        return view('dashboard', [
+            'sessao' => $sessao, 
+            'family' => $family
+        ]);
     }
 
 
