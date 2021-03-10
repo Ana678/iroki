@@ -8,6 +8,8 @@ use App\Models\Family;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Storage;
+
 
 class EventController extends Controller
 {
@@ -124,7 +126,10 @@ class EventController extends Controller
     public function updateProfileImage(Request $request){
 
         $sessao = auth()->user();
-    
+
+        if($sessao->profile_photo_path != NULL) {
+            Storage::delete("assets/img/avatars/$sessao->profile_photo_path");
+        }
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
 
