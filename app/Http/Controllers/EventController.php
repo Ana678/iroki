@@ -8,20 +8,10 @@ use App\Models\Family;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Jetstream\Jetstream;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
-class EventController extends Controller
-{
-    public function index()
-    {
-        return view('index');
-    }
-
-    public function login()
-    {
-        return view('login');
-    }
+class EventController extends Controller{
 
     public function cadastro(Request $request){
         
@@ -64,11 +54,6 @@ class EventController extends Controller
         return view('validacao');
     }
 
-    public function cadastroFamilia()
-    {
-        return view('cadastroFamilia');
-    }
-
     public function inserirEmail()
     {
         return view('login.recuperarSenha');
@@ -101,7 +86,12 @@ class EventController extends Controller
     public function profile()
     {
         $sessao = auth()->user();
-        return view('profile', ['sessao' => $sessao]);
+        $family = Family::where('id', $sessao->family_id)->first();
+
+        return view('profile', [
+            'sessao' => $sessao, 
+            'family' => $family
+        ]);
     }
 
     public function tableMaster()
@@ -127,8 +117,8 @@ class EventController extends Controller
 
         $sessao = auth()->user();
 
-        if($sessao->profile_photo_path != NULL) {
-            Storage::delete("assets/img/avatars/$sessao->profile_photo_path");
+        if(@isset($sessao->profile_photo_path)) {
+            File::delete("assets/img/avatars/".$sessao->profile_photo_path);
         }
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
@@ -162,5 +152,5 @@ class EventController extends Controller
         return redirect('profile');
         
     }
-    
+
 }

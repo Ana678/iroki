@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FamilyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,11 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/', [EventController::class, 'index']);
+Route::get('/', function(){
+    return view('index');
+});
 
-Route::get('cadastroFamilia', [EventController::class, 'cadastroFamilia']);
+Route::get('cadastroMembro', [FamilyController::class, 'cadastroMembro']);
 
 Route::get('recuperarSenha', [EventController::class, 'recuperarSenha']);
 

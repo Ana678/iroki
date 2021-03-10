@@ -15,7 +15,7 @@ class CreateFamiliesTable extends Migration
     {
         Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->text('families_photo_path')->nullable();
+            $table->text('family_photo_path')->nullable();
             $table->timestamps();
         });
     }
