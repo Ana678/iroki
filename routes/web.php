@@ -27,7 +27,7 @@ Route::get('recuperarSenha', [EventController::class, 'recuperarSenha']);
 
 Route::get('novaSenha', [EventController::class, 'novaSenha']);
 
-Route::post('cadastro', [EventController::class, 'cadastro'])->middleware('auth');
+Route::post('cadastro', [EventController::class, 'cadastro']);
 
 Route::get('primeiroLogin', [EventController::class, 'primeiroLogin'])->middleware('auth');
 
