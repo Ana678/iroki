@@ -9,18 +9,17 @@ use App\Models\Family;
 class FamilyController extends Controller
 {
 
-    public function cadastroMembro()
-    {
+    public function cadastroMembro(){
         return view('cadastroMembro');
     }
 
-    /*public function updateFamilyImage(Request $request){
-
+    public function updateFamilyImage(Request $request){
+        
         $userFamily = auth()->user()->family_id;
         $family = Family::where('id', $userFamily)->first();
 
         if(@isset($family->family_photo_path)) {
-            File::delete("assets/img/family/".$family->families_photo_path);
+            File::delete("assets/img/family/".$family->family_photo_path);
         }
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
@@ -30,12 +29,12 @@ class FamilyController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) . "." . $extension;
 
-            $requestImage->move(public_path('assets/img/avatars'), $imageName);
+            $requestImage->move(public_path('assets/img/family'), $imageName);
 
-            User::where('id',$sessao->id)->update(['profile_photo_path' => $imageName]);
+            Family::where('id',$family->id)->update(['family_photo_path' => $imageName]);
         }
 
         return redirect('profile');
         
-    }*/
+    }
 }

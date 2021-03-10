@@ -50,3 +50,5 @@ Route::get('tableMaster', function(){
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
 Route::get('cadastroMembro', [FamilyController::class, 'cadastroMembro'])->middleware('auth');
+
+Route::post('updateFamilyImage', [FamilyController::class, 'updateFamilyImage'])->middleware('auth');

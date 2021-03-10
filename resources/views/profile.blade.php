@@ -46,7 +46,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group text-center"><button class="btn btn-primary btn-sm" type="submit" style="background: #e75c25;border-color: #e75c25;">Editar Dados</button></div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-primary btn-sm" type="submit" style="background: #e75c25;border-color: #e75c25;">Editar Dados</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -57,12 +59,20 @@
         <div class="row mb-3" style="margin-top: 16px;">
             <div class="col-xl-4" style="margin-top: 16px;">
                 <div class="card align-items-center" style="border-color: transparent;background: transparent;">
-                    <div class="card-body text-center shadow"><img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/depositphotos_50696813-stock-photo-family-playing-soccer-in-park.jpg">
+                    <div class="card-body text-center shadow">
+                        @if (@isset($family->family_photo_path))
+                            <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/family/{{$family->family_photo_path}}">    
+                        @else
+                            <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/standardFamily.jpg">
+                        @endif
                         <div class="mb-3">
-                            <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
-                                 Alterar Imagem Da Família
-                                 <input class="d-none" type="file" name="arquivo" />
-                            </label>
+                            <form action="updateFamilyImage" name="family_photo" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <label class="btn btn-primary btn-sm" style="background: #e75c25;border-color: #e75c25;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">
+                                    Alterar Imagem Da Família
+                                    <input class="d-none" type="file" name="image" onchange="document.forms['family_photo'].submit()" />
+                                </label>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -85,7 +95,7 @@
                                                         height="25" 
                                                         style="margin-right: 10px;"
                                                 >
-                                                <strong>José Vicktor</strong>
+                                                <strong>José Victor</strong>
                                             </label>
                                         </div>
                                         <div class="col-lg-6 offset-lg-5 text-center mx-auto">

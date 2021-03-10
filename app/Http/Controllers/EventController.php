@@ -102,7 +102,6 @@ class EventController extends Controller{
 
 
     public function updateProfileImage(Request $request){
-
         $sessao = auth()->user();
 
         if(@isset($sessao->profile_photo_path)) {
