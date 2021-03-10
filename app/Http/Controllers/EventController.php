@@ -141,4 +141,21 @@ class EventController extends Controller
         return redirect('profile');
         
     }
+
+    public function updateProfileDados(Request $request){
+
+        $sessao = auth()->user();
+        
+        $name = $request->name;
+        $email = $request->email;
+
+        User::where('id',$sessao->id)->update([
+            'name' => $name,
+            'email' => $email
+        ]);
+
+        return redirect('profile');
+        
+    }
+    
 }
