@@ -112,16 +112,14 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form action="cadastroMembro">
-                                    <div class="text-center mb-3" style="margin-top: 15px;">
-                                        <button class="btn btn-primary btn-sm" 
-                                                type="button" 
-                                                style="background: #e75c25;border-color: #e75c25;"
-                                        >
-                                            Adicionar Membro
-                                        </button>
-                                    </div>
-                                </form>
+                                <div class="text-center mb-3" style="margin-top: 15px;">
+                                    <button class="btn btn-primary btn-sm"
+                                            style="background: #e75c25;border-color: #e75c25;"
+                                            onclick="location.href='cadastroMembro';"
+                                    >
+                                        Adicionar Membro
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

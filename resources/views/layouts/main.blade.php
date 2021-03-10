@@ -35,14 +35,14 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="dashboard"><i
                                 class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile"><i
-                                class="fas fa-user"></i><span>Frios</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="tableMaster"><i
-                                class="fas fa-table"></i><span>Cereais</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login"><i
-                                class="far fa-user-circle"></i><span>Frutas</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="cadastro"><i
-                                class="fas fa-user-circle"></i><span>Gelados</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i
+                                class="fas fa-user"></i><span>Categoria 1</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i
+                                class="fas fa-table"></i><span>Categoria 2</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i
+                                class="far fa-user-circle"></i><span>Categoria 3</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i
+                                class="fas fa-user-circle"></i><span>Categoria 4</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>

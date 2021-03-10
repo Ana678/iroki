@@ -18,11 +18,16 @@ Route::get('/', function(){
     return view('index');
 });
 
+//Testando o cadastro
+Route::get('registerPadrao', function(){return view('auth.registerPadrao');});
+//--------------------
+
+
 Route::get('recuperarSenha', [EventController::class, 'recuperarSenha']);
 
 Route::get('novaSenha', [EventController::class, 'novaSenha']);
 
-Route::post('cadastro', [EventController::class, 'cadastro']);
+Route::post('cadastro', [EventController::class, 'cadastro'])->middleware('auth');
 
 Route::get('primeiroLogin', [EventController::class, 'primeiroLogin'])->middleware('auth');
 
@@ -35,8 +40,13 @@ Route::get('profile', [EventController::class, 'profile'])->middleware('auth');
 Route::post('updateProfileImage', [EventController::class, 'updateProfileImage'])->middleware('auth');
 Route::post('updateProfileData', [EventController::class, 'updateProfileData'])->middleware('auth');
 
-Route::get('categoryDetail/{id}', [EventController::class, 'categoryDetail'])->middleware('auth');
+Route::get('categoryDetail', [EventController::class, 'categoryDetail'])->middleware('auth');
+
+Route::get('tableMaster', function(){
+    $sessao = auth()->user();
+    return view('categoryDetailM', ['sessao' => $sessao]);
+});
 
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
-Route::get('cadastroMembro', [FamilyController::class, 'cadastroMembro']);
+Route::get('cadastroMembro', [FamilyController::class, 'cadastroMembro'])->middleware('auth');

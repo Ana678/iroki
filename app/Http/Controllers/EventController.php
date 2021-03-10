@@ -84,11 +84,11 @@ class EventController extends Controller{
         ]);
     }
 
-    public function categoryDetail($id){
+    public function categoryDetail(/*$id*/){
         $sessao = auth()->user();
 
         if($sessao->master == 1){
-            return view('categoryDetailM', ['sessao' => $sessao, 'category_id' => $id]);
+            return view('categoryDetailM', ['sessao' => $sessao/*, 'category_id' => $id*/]);
         }elseif($sessao->master == 0){
             return view('categoryDetailC', ['sessao' => $sessao, 'category_id' => $id]);
         }   

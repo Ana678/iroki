@@ -27,7 +27,7 @@
                             <form class="user">
                                 <div class="form-group row" style="margin: 36px -12px;">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <a href="cadastroFamilia">
+                                        <a href="cadastroMembro">
                                             <button class="btn btn-primary btn-block text-white btn-user" 
                                                     type="button" 
                                                     style="background: #E75C23;border-color: #E75C25;"
@@ -50,7 +50,7 @@
                                 <hr>
                             </form>
                             <div class="text-center">
-                                <br>(Você também pode inserir membros da sua família pela tela do seu perfil!)<br>
+                                <br>Você também pode inserir membros da sua família pela tela do seu perfil!<br>
                             </div>
                         </div>
                     </div>
