@@ -37,8 +37,6 @@ Route::get('profile', [EventController::class, 'profile'])->middleware('auth');
 Route::post('updateProfileImage', [EventController::class, 'updateProfileImage'])->middleware('auth');
 Route::post('updateProfileDados', [EventController::class, 'updateProfileDados'])->middleware('auth');
 
-Route::get('tableMaster', [EventController::class, 'tableMaster'])->middleware('auth');
-
-Route::get('tableSimples', [EventController::class, 'tableSimples'])->middleware('auth');
+Route::get('categoryDetail/{id}', [EventController::class, 'categoryDetail'])->middleware('auth');
 
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');

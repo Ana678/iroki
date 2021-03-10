@@ -54,37 +54,27 @@ class EventController extends Controller{
         return view('validacao');
     }
 
-    public function inserirEmail()
-    {
+    public function recuperarSenha(){
         return view('login.recuperarSenha');
     }
 
-    public function novaSenha()
-    {
+    public function novaSenha(){
         return view('novaSenha');
     }
 
     public function primeiroLogin(){
-        
-        $sessao = auth()->user();
-
-        $sessao->id;
-
         return view('login.primeiroLogin');
     }
 
-    public function primeiroLogin2()
-    {
-        return view('primeiroLogin2');
+    public function primeiroLogin2(){
+        return view('login.primeiroLogin2');
     }
 
-    public function normalLogin()
-    {
+    public function normalLogin(){
         return view('normalLogin');
     }
 
-    public function profile()
-    {
+    public function profile(){
         $sessao = auth()->user();
         $family = Family::where('id', $sessao->family_id)->first();
 
@@ -94,16 +84,14 @@ class EventController extends Controller{
         ]);
     }
 
-    public function tableMaster()
-    {
+    public function categoryDetail($id){
         $sessao = auth()->user();
-        return view('tableMaster', ['sessao' => $sessao]);
-    }
 
-    public function tableSimples()
-    {
-        $sessao = auth()->user();
-        return view('tableSimples', ['sessao' => $sessao]);
+        if($sessao->master == 1){
+            return view('tableMaster', ['sessao' => $sessao, 'category_id' => $id]);
+        }elseif($sessao->master == 0){
+            return view('tableSimples', ['sessao' => $sessao, 'category_id' => $id]);
+        }   
     }
 
     public function dashboard()
