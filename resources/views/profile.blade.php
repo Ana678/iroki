@@ -28,7 +28,7 @@
                         <div class="card shadow mb-3">
                             <div class="card-header py-3"></div>
                             <div class="card-body">
-                                <form action="updateProfileDados" method="POST" enctype="multipart/form-data">
+                                <form action="updateProfileData" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-row">
                                         <div class="col">

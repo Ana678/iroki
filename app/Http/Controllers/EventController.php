@@ -88,9 +88,9 @@ class EventController extends Controller{
         $sessao = auth()->user();
 
         if($sessao->master == 1){
-            return view('tableMaster', ['sessao' => $sessao, 'category_id' => $id]);
+            return view('categoryDetailM', ['sessao' => $sessao, 'category_id' => $id]);
         }elseif($sessao->master == 0){
-            return view('tableSimples', ['sessao' => $sessao, 'category_id' => $id]);
+            return view('categoryDetailC', ['sessao' => $sessao, 'category_id' => $id]);
         }   
     }
 
@@ -125,7 +125,7 @@ class EventController extends Controller{
         
     }
 
-    public function updateProfileDados(Request $request){
+    public function updateProfileData(Request $request){
 
         $sessao = auth()->user();
         

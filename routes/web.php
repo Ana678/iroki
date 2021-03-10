@@ -18,8 +18,6 @@ Route::get('/', function(){
     return view('index');
 });
 
-Route::get('cadastroMembro', [FamilyController::class, 'cadastroMembro']);
-
 Route::get('recuperarSenha', [EventController::class, 'recuperarSenha']);
 
 Route::get('novaSenha', [EventController::class, 'novaSenha']);
@@ -35,8 +33,10 @@ Route::get('normalLogin', [EventController::class, 'normalLogin'])->middleware('
 Route::get('profile', [EventController::class, 'profile'])->middleware('auth');
 
 Route::post('updateProfileImage', [EventController::class, 'updateProfileImage'])->middleware('auth');
-Route::post('updateProfileDados', [EventController::class, 'updateProfileDados'])->middleware('auth');
+Route::post('updateProfileData', [EventController::class, 'updateProfileData'])->middleware('auth');
 
 Route::get('categoryDetail/{id}', [EventController::class, 'categoryDetail'])->middleware('auth');
 
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+
+Route::get('cadastroMembro', [FamilyController::class, 'cadastroMembro']);
