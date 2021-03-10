@@ -33,6 +33,11 @@
                                 </div>
                                 <hr>
                             </form>
+                            <div class="text-center">
+                                <a class="small" href="primeiroLogin2" style="color: #68aea1;">
+                                    <br><b>Não Cadastrar Recados</b><br>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
