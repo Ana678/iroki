@@ -77,17 +77,16 @@
                                             &nbsp;{{ $sessao->name }}
                                         </span>
                                         <img class="border rounded-circle img-profile"
-                                            src="assets/img/avatars/{{$sessao->profile_photo_path}}">
+                                            @if(@isset($sessao->profile_photo_path))
+                                                src="assets/img/avatars/{{$sessao->profile_photo_path}}"
+                                            @else
+                                                src="assets/img/avatars/avatarPadrao.jpeg"
+                                            @endif
+                                        >
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
-                                        <a  class="dropdown-item" href="profile">
-                                            <i  class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile
-                                        </a>
-                                        <a  class="dropdown-item" href="#">
-                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings
-                                        </a>
-                                        <a  class="dropdown-item" href="#">
-                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log
+                                        <a class="dropdown-item" href="profile">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil
                                         </a>
                                         <div class="dropdown-divider"></div>
 

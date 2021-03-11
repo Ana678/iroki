@@ -77,10 +77,13 @@ class EventController extends Controller{
     public function profile(){
         $sessao = auth()->user();
         $family = Family::where('id', $sessao->family_id)->first();
+        
+        $familyMembers = User::where('family_id', $family->id)->get();
 
         return view('profile', [
             'sessao' => $sessao, 
-            'family' => $family
+            'family' => $family,
+            'familyMembers' => $familyMembers
         ]);
     }
 
