@@ -75,15 +75,29 @@ class EventController extends Controller{
     }
 
     public function profile(){
-        $sessao = auth()->user();
+        $sessao = auth()->user();  
         $family = Family::where('id', $sessao->family_id)->first();
-        
         $familyMembers = User::where('family_id', $family->id)->get();
 
         return view('profile', [
-            'sessao' => $sessao, 
+            'sessao' => $sessao,
             'family' => $family,
             'familyMembers' => $familyMembers
+        ]);
+    }
+
+    public function profileEmailError(){
+        $sessao = auth()->user();
+        $family = Family::where('id', $sessao->family_id)->first();
+        $familyMembers = User::where('family_id', $family->id)->get();
+
+        $msg = 'Este email já está ocupado';
+
+        return view('profile', [
+            'sessao' => $sessao,
+            'family' => $family,
+            'familyMembers' => $familyMembers,
+            'msg' => $msg
         ]);
     }
 
@@ -93,7 +107,7 @@ class EventController extends Controller{
         if($sessao->master == 1){
             return view('categoryDetailM', ['sessao' => $sessao/*, 'category_id' => $id*/]);
         }elseif($sessao->master == 0){
-            return view('categoryDetailC', ['sessao' => $sessao, 'category_id' => $id]);
+            return view('categoryDetailC', ['sessao' => $sessao/*, 'category_id' => $id*/]);
         }   
     }
 
@@ -137,6 +151,15 @@ class EventController extends Controller{
         $sessao = auth()->user();
         
         $name = $request->name;
+
+        $user = User::where('email', $request->email)->first();
+
+        if($request->email == $user->email && $request->email != $sessao->email){
+            //Email já ocupado
+            //Como mostrar pro usuário???
+            return redirect('profileEmailError');
+        }
+        
         $email = $request->email;
 
         User::where('id',$sessao->id)->update([

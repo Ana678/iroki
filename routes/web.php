@@ -36,6 +36,7 @@ Route::get('primeiroLogin2', [EventController::class, 'primeiroLogin2'])->middle
 Route::get('normalLogin', [EventController::class, 'normalLogin'])->middleware('auth');
 
 Route::get('profile', [EventController::class, 'profile'])->middleware('auth');
+Route::get('profileEmailError', [EventController::class, 'profileEmailError'])->middleware('auth');
 
 Route::post('updateProfileImage', [EventController::class, 'updateProfileImage'])->middleware('auth');
 Route::post('updateProfileData', [EventController::class, 'updateProfileData'])->middleware('auth');

@@ -47,7 +47,14 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="email"><strong>Email</strong></label>
+                                                <label for="email">
+                                                    @if(@isset($msg))
+                                                        <strong style="color:red">{{$msg}}</strong>
+                                                    @else
+                                                        <strong>Email</strong>
+                                                    @endif
+                                                    
+                                                </label>
                                                 <input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" value="{{$sessao->email}}">
                                             </div>
                                         </div>
