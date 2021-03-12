@@ -5,14 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/untitled.css">
+
+    <?php
+        use App\Models\Category;
+
+        $navbarCategories = Category::all();
+    ?>
+
 </head>
 
 <body id="page-top">
@@ -21,7 +28,7 @@
             style="background: #68aea1;">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-                    href="dashboard">
+                    href="/dashboard">
                     <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
                             height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-intersect"
                             style="font-size: 32;">
@@ -33,16 +40,25 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="dashboard"><i
-                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href=""><i
-                                class="fas fa-user"></i><span>Categoria 1</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href=""><i
-                                class="fas fa-table"></i><span>Categoria 2</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href=""><i
-                                class="far fa-user-circle"></i><span>Categoria 3</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href=""><i
-                                class="fas fa-user-circle"></i><span>Categoria 4</span></a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    @foreach($navbarCategories as $navbarCategory)
+                        <li class="nav-item">
+                            <form action="categoryDetail">
+                                    <a class="nav-link" href="/categoryDetail/{{$navbarCategory->id}}">
+                                        <i class="fas fa-user"></i>
+                                        <span>{{$navbarCategory->name}}</span>
+                                    </a>
+                            </form>
+                        </li>
+                    @endforeach
+
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
@@ -78,9 +94,9 @@
                                         </span>
                                         <img class="border rounded-circle img-profile"
                                             @if(@isset($sessao->profile_photo_path))
-                                                src="assets/img/avatars/{{$sessao->profile_photo_path}}"
+                                                src="/assets/img/avatars/{{$sessao->profile_photo_path}}"
                                             @else
-                                                src="assets/img/avatars/avatarPadrao.jpeg"
+                                                src="/assets/img/avatars/avatarPadrao.jpeg"
                                             @endif
                                         >
                                     </a>
@@ -95,14 +111,12 @@
                                             <a href="/logout" class="dropdown-item" 
                                                 onclick="event.preventDefault();
                                                          this.closest('form').submit();">
-                                                <i
-                                                    class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout
+                                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400">
+                                                </i>
+                                                &nbsp;Logout
                                             </a>
                                         </form>
-
-                                        <a class="dropdown-item" href="login">
-
-                                        </a>
+                                        <a class="dropdown-item" href="login"></a>
                                     </div>
                                 </div>
                             </li>
@@ -116,10 +130,10 @@
             </footer>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
 </body>
 
 </html>

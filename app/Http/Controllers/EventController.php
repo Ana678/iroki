@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\File;
+use App\Models\Product;
+use App\Models\Category;
 
 
 class EventController extends Controller{
@@ -101,14 +103,25 @@ class EventController extends Controller{
         ]);
     }
 
-    public function categoryDetail(/*$id*/){
+    public function categoryDetail($categoryID){
+
         $sessao = auth()->user();
 
-        if($sessao->master == 1){
-            return view('categoryDetailM', ['sessao' => $sessao/*, 'category_id' => $id*/]);
-        }elseif($sessao->master == 0){
-            return view('categoryDetailC', ['sessao' => $sessao/*, 'category_id' => $id*/]);
-        }   
+        $category = Category::where('id', $categoryID)->first();
+
+        $modalCategories = Category::all();
+
+        $products = Product::where('category_id', $categoryID)
+                        ->where('family_id', $sessao->family_id)
+                        ->get();
+
+        return view('categoryDetail', [
+                        'sessao' => $sessao, 
+                        'products' => $products, 
+                        'category' => $category,
+                        'modalCategories' => $modalCategories
+        ]);
+           
     }
 
     public function dashboard()

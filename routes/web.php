@@ -41,12 +41,7 @@ Route::get('profileEmailError', [EventController::class, 'profileEmailError'])->
 Route::post('updateProfileImage', [EventController::class, 'updateProfileImage'])->middleware('auth');
 Route::post('updateProfileData', [EventController::class, 'updateProfileData'])->middleware('auth');
 
-Route::get('categoryDetail', [EventController::class, 'categoryDetail'])->middleware('auth');
-
-Route::get('tableMaster', function(){
-    $sessao = auth()->user();
-    return view('categoryDetailM', ['sessao' => $sessao]);
-});
+Route::get('categoryDetail/{id}', [EventController::class, 'categoryDetail'])->middleware('auth');
 
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
@@ -60,3 +55,5 @@ Route::post('updateFamilyImage', [FamilyController::class, 'updateFamilyImage'])
 
 Route::post('editarMembro/{id}', [FamilyController::class, 'editarMembro'])->middleware('auth');
 Route::post('editandoMembro/{id}', [FamilyController::class, 'editandoMembro'])->middleware('auth');
+
+Route::post('addProduct', [FamilyController::class, 'addProduct'])->middleware('auth');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Family;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 
 class FamilyController extends Controller
@@ -120,5 +121,29 @@ class FamilyController extends Controller
         ]);
 
         return redirect('profile');
+    }
+
+
+    public function addProduct(Request $request){
+        echo $request->name.' --- '
+            .$request->quantity.' --- '
+            .$request->description.' --- '
+            .$request->category.' --- ';
+
+        dd("Olá");
+
+        $sessao = auth()->user();
+
+        $product = new Product;
+
+        $product->name = $request->name;
+        $product->quantity = $request->quantity;
+        $product->description = $request->description;
+        $product->bought = 0;
+        $product->family_id = $sessao->family_id;
+        $product->category_id = $request->category;
+
+        $product->save();
+
     }
 }
