@@ -125,10 +125,6 @@ class FamilyController extends Controller
 
 
     public function addProduct(Request $request){
-        echo $request->name.' --- '
-            .$request->quantity.' --- '
-            .$request->description.' --- '
-            .$request->category.' --- ';
 
         dd("Olá");
 
@@ -144,6 +140,7 @@ class FamilyController extends Controller
         $product->category_id = $request->category;
 
         $product->save();
+        return redirect('dashboard');
 
     }
 }

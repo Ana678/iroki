@@ -132,10 +132,12 @@ class EventController extends Controller{
     {
         $sessao = auth()->user();
         $family = Family::where('id', $sessao->family_id)->first();
+        $modalCategories = Category::all();
 
         return view('dashboard', [
             'sessao' => $sessao, 
-            'family' => $family
+            'family' => $family,
+            'modalCategories' => $modalCategories
         ]);
     }
 

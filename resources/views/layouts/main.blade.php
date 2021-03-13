@@ -52,7 +52,7 @@
                         <li class="nav-item">
                             <form action="categoryDetail">
                                     <a class="nav-link" href="/categoryDetail/{{$navbarCategory->id}}">
-                                        <i class="fas fa-user"></i>
+                                        <i class="{{$navbarCategory->icon}}"></i>
                                         <span>{{$navbarCategory->name}}</span>
                                     </a>
                             </form>
