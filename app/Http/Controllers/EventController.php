@@ -69,7 +69,8 @@ class EventController extends Controller{
     }
 
     public function primeiroLogin(){
-        return view('login.primeiroLogin');
+        $sessao = auth()->user();
+        return view('login.primeiroLogin',['sessao' => $sessao]);
     }
 
     public function primeiroLogin2(){
@@ -174,8 +175,7 @@ class EventController extends Controller{
         $user = User::where('email', $request->email)->first();
 
         if($request->email == $user->email && $request->email != $sessao->email){
-            //Email já ocupado
-            //Como mostrar pro usuário???
+
             return redirect('profileEmailError');
         }
         
@@ -188,6 +188,68 @@ class EventController extends Controller{
 
         return redirect('profile');
         
+    }
+
+    public function inserirCategoriasPredefinidas(){
+
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+        
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+                
+        Category::fistOrCreate([
+            'name' => 'Alimentos Básicos',
+        ],[
+            'icon' => ''
+        ]);
+        
+
+
+
+
     }
 
 }

@@ -10,7 +10,7 @@
                     <div class="col">
                         <div class="p-5">
                             <div class="text-center">
-                                <h4 class="text-dark mb-4" style="color: rgb(90, 92, 105);">Olá Ana, seja muito bem vindo(a) ao iroki!</h4>
+                                <h4 class="text-dark mb-4" style="color: rgb(90, 92, 105);">Olá {{$sessao->name}}, seja muito bem vindo(a) ao iroki!</h4>
                             </div>
                             <form class="user">
                                 <div class="form-group row justify-content-center"><small class="form-text text-muted" style="margin: 12px 0px 0px;font-size: 14px;">Gostaria de cadastrar alguma coisa na lista de afazeres da família?</small></div>

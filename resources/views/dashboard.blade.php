@@ -15,45 +15,92 @@
                                 <h4 class="modal-title" style="color: rgb(90,92,105);"><strong>Adicionar Produto</strong></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="addProduct">
+                                <form action="/addProduct" method="POST">
                                     @csrf
-                                    <div class="form-row" style="margin: 15px -5px;">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="city"><strong>Nome</strong></label>
-                                                <input class="form-control" type="text" placeholder="Feijão Preto" name="name" style="width: 100%;">
+                                    <div class="modal-body">
+                                        <div class="form-row" style="margin: 15px -5px;">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="city">
+                                                        <strong>Nome</strong>
+                                                    </label>
+                                                    <input class="form-control"
+                                                            type="text"
+                                                            id="name"
+                                                            placeholder="Feijão Preto"
+                                                            name="name"
+                                                            style="width: 100%;"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="country">
+                                                        <strong>Quantidade</strong>
+                                                    </label>
+                                                    <input class="form-control" 
+                                                            type="number" 
+                                                            id="quantity" 
+                                                            placeholder="10" 
+                                                            min= "0"
+                                                            name="quantity" 
+                                                            style="width: 100%;"
+                                                    >
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="country"><strong>Quantidade</strong></label>
-                                                <input class="form-control" type="number" min="0"; placeholder="10" name="quantity" style="width: 100%;">
+                                        <div class="form-row" style="margin: 15px -5px;">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="city">
+                                                        <strong>Categoria</strong>
+                                                    </label>
+                                                    <select class="form-control" 
+                                                            style="width: 100%;"
+                                                            name="category"
+                                                    >
+                                                        <optgroup label="Categorias">
+                                                            @foreach($modalCategories as $modalCategory)
+                                                                <option value="{{$modalCategory->id}}">
+                                                                    {{$modalCategory->name}}
+                                                                </option>
+                                                            @endforeach
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="description">
+                                                        <strong>Descrição</strong>
+                                                    </label>
+                                                    <input class="form-control" 
+                                                            type="text" 
+                                                            placeholder="Marca Fugini"
+                                                            id="description"
+                                                            name="description"
+                                                            style="width: 100%;"
+                                                    >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row" style="margin: 15px -5px;">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="city"><strong>Categoria</strong></label>
-                                                <select class="form-control" style="width: 100%;" name="category">
-                                                    <optgroup label="Categorias"> 
-                                                        @foreach($modalCategories as $modalCategory)
-                                                            <option value="{{$modalCategory->id}}">{{$modalCategory->name}}</option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group"><label for="country"><strong>Descrição</strong></label>
-                                            <input class="form-control" type="text" placeholder="Marca Fugini" name="description" style="width: 100%;"></div>
-                                        </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button class="btn btn-warning" 
+                                            data-dismiss="modal" 
+                                            style="border-color: #e75c25;background: #e75c25;" 
+                                            type="button"
+                                            >
+                                        Voltar
+                                    </button>
+                                    <button class="btn btn-warning" 
+                                            style="background: #e75c25;border-color: #e75c25;" 
+                                            type="submit"
+                                            >
+                                            Salvar
+                                        </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer justify-content-center">
-                                <button class="btn btn-warning" data-dismiss="modal" style="border-color: #e75c25;background: #e75c25;" type="button">Voltar</button>
-                                <button class="btn btn-warning" style="background: #e75c25;border-color: #e75c25;" type="submit">Salvar</button>
                             </div>
                         </div>
                     </div>

@@ -123,10 +123,7 @@ class FamilyController extends Controller
         return redirect('profile');
     }
 
-
     public function addProduct(Request $request){
-
-        dd("Olá");
 
         $sessao = auth()->user();
 

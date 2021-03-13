@@ -78,7 +78,7 @@
                                                             <input class="form-control"
                                                                     type="text"
                                                                     id="name"
-                                                                    placeholder="Ketchup da tia"
+                                                                    placeholder="Feijão Preto"
                                                                     name="name"
                                                                     style="width: 100%;"
                                                             >
@@ -93,6 +93,7 @@
                                                                     type="number" 
                                                                     id="quantity" 
                                                                     placeholder="10" 
+                                                                    min= "0"
                                                                     name="quantity" 
                                                                     style="width: 100%;"
                                                             >
@@ -109,7 +110,7 @@
                                                                     style="width: 100%;"
                                                                     name="category"
                                                             >
-                                                                <optgroup label="This is a group">
+                                                                <optgroup label="Categorias">
                                                                     @foreach($modalCategories as $modalCategory)
                                                                         <option value="{{$modalCategory->id}}"
                                                                             @if($modalCategory->name == $category->name)
@@ -130,6 +131,7 @@
                                                             </label>
                                                             <input class="form-control" 
                                                                     type="text" 
+                                                                    placeholder="Marca Fugini"
                                                                     id="description"
                                                                     name="description"
                                                                     style="width: 100%;"
@@ -140,14 +142,13 @@
                                             </div>
                                             <div class="modal-footer justify-content-center">
                                                 <button class="btn btn-warning" 
-                                                data-dismiss="modal" 
+                                                    data-dismiss="modal" 
                                                     style="border-color: #e75c25;background: #e75c25;" 
                                                     type="button"
                                                     >
                                                 Voltar
                                             </button>
                                             <button class="btn btn-warning" 
-                                                    data-dismiss="modal" 
                                                     style="background: #e75c25;border-color: #e75c25;" 
                                                     type="submit"
                                                     >
