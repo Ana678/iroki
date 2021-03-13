@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use App\Models\Family;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -20,19 +21,42 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        $boolean = 1;
+
+        $novaFamilia = new Family;
+        $novaFamilia->save();
+        $codFamilia = Family::select('id')->orderBy('id', 'DESC')->first()->id;
+
+        $imageName = null;
+
+        if(isset($input['image'])){
+
+            $requestImage = $input['image'];
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) . "." . $extension;
+
+            $requestImage->move(public_path('assets/img/avatars'), $imageName);
+            
+        }
+        
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
-            //'master' => ['tinyint'],
+            'master' => ['boolean'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
         return User::create([
+            
             'name' => $input['name'],
             'email' => $input['email'],
-            //'master' => 1,
+            'master' => $boolean,
             'password' => Hash::make($input['password']),
+            'family_id' => $codFamilia,
+            'profile_photo_path' => $imageName,
         ]);
     }
 }

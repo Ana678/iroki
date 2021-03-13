@@ -78,6 +78,7 @@
                         @else
                             <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/standardFamily.jpg">
                         @endif
+                        @if($sessao->master == 1)
                         <div class="mb-3">
                             <form action="updateFamilyImage" name="family_photo" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -87,6 +88,7 @@
                                 </label>
                             </form>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -178,6 +180,7 @@
                                     @endif
                                 @endforeach
                                 <!--Fim da listagem-->
+                                @if($sessao->master == 1)
                                 <div class="text-center mb-3" style="margin-top: 15px;">
                                     <button class="btn btn-primary btn-sm"
                                             style="background: #e75c25;border-color: #e75c25;"
@@ -186,6 +189,7 @@
                                         Adicionar Membro
                                     </button>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

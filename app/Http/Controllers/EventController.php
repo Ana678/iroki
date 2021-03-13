@@ -60,6 +60,10 @@ class EventController extends Controller{
         return view('login.recuperarSenha');
     }
 
+    public function validacao(){
+        return view('validacao');
+    }
+
     public function novaSenha(){
         return view('novaSenha');
     }
