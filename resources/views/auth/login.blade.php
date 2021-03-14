@@ -56,7 +56,7 @@
                                             required autocomplete="current-password"
                                     >
                                 </div>
-                                <div class="custom-control custom-checkbox small" style="margin: 20px 0px;padding: 0px;">
+                          <!--      <div class="custom-control custom-checkbox small" style="margin: 20px 0px;padding: 0px;">
                                     <div>
                                         <fieldset style="padding: 0px 15px;">
                                             <div class="block mt-4">
@@ -67,7 +67,7 @@
                                             </div>
                                         </fieldset>
                                     </div>
-                                </div>
+                                </div>  -->
                                 <button class="btn btn-primary btn-block text-white btn-user" 
                                         type="submit"
                                         style="background: #E75C25;border-color: #E75C25;"
