@@ -76,7 +76,7 @@
                                                     </label>
                                                     <input class="form-control" 
                                                             type="text" 
-                                                            placeholder="Marca Fugini"
+                                                            placeholder="Marca Tia avó"
                                                             id="description"
                                                             name="description"
                                                             style="width: 100%;"
@@ -134,94 +134,172 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div id="modal-open-1">
-                            <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal-1" aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" 
+                                    role="dialog" 
+                                    tabindex="-1" 
+                                    id="exampleModal-1"
+                                    aria-labelledby="exampleModalLabel"
+                            >
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header text-center">
                                             <h4 class="modal-title" style="color: rgb(90,92,105);"><strong>Adicionar Afazeres</strong></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group"><label for="city"><strong>Título</strong><br></label><input class="form-control" type="text" id="city-1" placeholder="Los Angeles" name="city" style="width: 100%;"></div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer justify-content-center">
-                                            <button class="btn btn-warning" data-dismiss="modal" style="border-color: #e75c25;background: #e75c25;" type="button">Voltar</button>
-                                            <button class="btn btn-warning" data-dismiss="modal" style="background: #e75c25;border-color: #e75c25;" type="button">Salvar</button>
-                                        </div>
+                                        <form action="/addTask" method="POST">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="title">
+                                                        <strong>Título</strong>
+                                                        <br>
+                                                    </label>
+                                                    <input class="form-control" 
+                                                            type="text" 
+                                                            id="title"
+                                                            placeholder="O que fazer?" 
+                                                            name="title" 
+                                                            style="width: 100%;"
+                                                    >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date">
+                                                        <strong>Quando?</strong>
+                                                        <br>
+                                                    </label>
+                                                    <input class="form-control" 
+                                                            type="time" 
+                                                            id="time"
+                                                            name="time" 
+                                                            style="width: 100%;"
+                                                    >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">
+                                                        <strong>Descrição</strong>
+                                                        <br>
+                                                    </label>
+                                                    <input class="form-control" 
+                                                            type="text" 
+                                                            id="description"
+                                                            placeholder="Caso tenha uma explicação específica"
+                                                            name="description" 
+                                                            style="width: 100%;"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button class="btn btn-warning" 
+                                                    style="border-color: #e75c25;background: #e75c25;"
+                                                    data-dismiss="modal"
+                                                    type="button"
+                                                >
+                                                    Voltar
+                                                </button>
+                                                <button class="btn btn-warning" 
+                                                    style="background: #e75c25;border-color: #e75c25;" 
+                                                    type="submit"
+                                                    name="screen"
+                                                    value="dashboard"
+                                                >
+                                                    Salvar
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <a class="btn btn-primary btn-sm float-right d-sm-inline-block" role="button" style="color: rgb(57,42,42);border-radius: 100%;margin-top: -5px;width: 31px;background: #e75c25;border-color: #e75c25;" data-toggle="modal" data-target="#exampleModal-1"><i class="icon ion-android-add fa-sm" style="color: rgb(255,255,255);"></i></a>
+                            <a class="btn btn-primary btn-sm float-right d-sm-inline-block" 
+                                role="button" 
+                                style="color: rgb(57,42,42);border-radius: 100%;margin-top: -5px;width: 31px;background: #e75c25;border-color: #e75c25;" 
+                                data-toggle="modal" 
+                                data-target="#exampleModal-1"
+                            >
+                                <i class="icon ion-android-add fa-sm" style="color: rgb(255,255,255);"></i>
+                            </a>
                         </div>
                         <h6 class="text-primary font-weight-bold m-0" style="color: #e75c25! important;">Lista de Afazeres</h6>
                     </div>
                     <ul class="list-group list-group-flush">
+                        <?php
+                            $checkboxCount = 1;
+                        ?>
+                        @foreach($tasks as $task)
                         <li class="list-group-item">
                             <div class="row align-items-center no-gutters">
                                 <div class="col mr-2">
-                                    <h6 class="mb-0"><strong>Ir a feira da vila</strong></h6><span class="text-xs">8:30 AM</span>
+                                    <h6 class="mb-0">
+                                        <strong>
+                                            {{$task->title}}
+                                        </strong>
+                                    </h6>
+                                    <span class="text-xs">
+                                        {{substr($task->date, 10, 6)}}
+                                    </span>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-1"><label class="custom-control-label" for="formCheck-1"></label></div>
+                                    <form action="deleteTask/{{$task->id}}" method="POST" name="deleteTask{{$task->id}}">
+                                        @csrf
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" 
+                                                type="checkbox"
+                                                id="<?php echo 'formCheck-'.$checkboxCount;?>"
+                                                onchange="document.forms['deleteTask{{$task->id}}'].submit()"
+                                            >
+                                            <!--O que esse checkbox faz??-->
+                                            <label class="custom-control-label" 
+                                                    for="<?php echo 'formCheck-'.$checkboxCount;?>"
+                                            ></label>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col mr-2">
-                                    <h6 class="mb-0"><strong>Fazer almoço de aniversário para a Luiza</strong><br></h6><span class="text-xs">11:30 AM</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-2"><label class="custom-control-label" for="formCheck-2"></label></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col mr-2">
-                                    <h6 class="mb-0"><strong>Lembrar de pegar o bolo da Luiza!</strong><br></h6><span class="text-xs">12:30 AM</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-3"><label class="custom-control-label" for="formCheck-3"></label></div>
-                                </div>
-                            </div>
-                        </li>
+                        <?php $checkboxCount++; ?>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-lg-4 col-xl-6 offset-xl-0 mb-4">
+            <div class="col-md-6 col-lg-4 col-xl-6 mb-4">
                 <div class="card shadow border-left-success py-2">
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
-                                <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Biblia jesus 1189/30</span></div>
-                                <div class="text-dark font-weight-bold h5 mb-0"><span><em>a familia é a luz!</em></span></div>
+                                <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
+                                    <span>Biblia jesus 1189/30</span>
+                                </div>
+                                <div class="text-dark font-weight-bold h5 mb-0">
+                                    <span>
+                                        <em>a familia é a luz!</em>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-8 col-xl-6 mb-4">
-                <div class="card shadow border-left-warning py-2">
-                    <div class="card-body">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col mr-2">
-                                <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Recado</span></div>
-                                <div class="text-dark font-weight-bold h5 mb-0"><span>-Matilde, lembre de não comer doce</span></div>
+            @foreach($messages as $message)
+                <div class="col-md-6 col-lg-8 col-xl-6 mb-4">
+                    <div class="card shadow border-left-warning py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                        <span>Recado</span>
+                                    </div>
+                                    <div class="text-dark font-weight-bold h5 mb-0">
+                                        <span>-{{$message->message}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
                             </div>
-                            <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
-    @if(@isset($errorMsg))
-        <script>
-            alert("{{$errorMsg}}");
-        </script>
-    @endif
 @endsection

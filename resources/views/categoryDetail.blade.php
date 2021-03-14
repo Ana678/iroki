@@ -16,7 +16,6 @@
                                 <th>Descrição</th>
                                 @if($sessao->master == 1)
                                     <th class="text-center" style="width: 118px;">Comprei</th>
-                                    <th style="width: 118px;">Não comprei</th>
                                     <th class="text-center" style="width: 118px;">Desnecessário</th>
                                 @endif
                             </tr>
@@ -28,21 +27,29 @@
                                     <td>{{$product->quantity}}</td>
                                     <td>{{$product->description}}</td>
                                     @if($sessao->master == 1)
+                                    <form action="/editProduct/{{$product->id}}" method="POST">
+                                        @csrf
                                         <td class="text-center" style="width: 109px;">
-                                            <button class="btn btn-primary" type="button" style="background: #E75C25;border-color: #E75C25;">
+                                            <button class="btn btn-primary" 
+                                                    type="submit"
+                                                    name="button"
+                                                    value="bought"
+                                                    style="background: #E75C25;border-color: #E75C25;"
+                                            >
                                                 <i class="fa fa-check"></i>
                                             </button>
                                         </td>
-                                        <td class="text-center" style="width: 79px;">
-                                            <button class="btn btn-primary" type="button" style="background: #E75C25;border-color: #E75C25;">
-                                                <i class="fa fa-remove"></i>
-                                            </button>
-                                        </td>
                                         <td class="text-center">
-                                            <button class="btn btn-primary" type="button" style="background: #E75C25;border-color: #E75C25;">
+                                            <button class="btn btn-primary" 
+                                                type="submit"
+                                                name="button"
+                                                value="unnecessary"
+                                                style="background: #E75C25;border-color: #E75C25;"
+                                            >
                                                 <i class="fa fa-thumbs-o-down"></i>
                                             </button>
                                         </td>
+                                    </form>
                                     @endif
                                 </tr>
                             @endforeach
@@ -55,7 +62,12 @@
                 <div class="row">
                     <div class="col text-center">
                         <div id="modal-open">
-                            <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel">
+                            <div class="modal fade" 
+                                    role="dialog" 
+                                    tabindex="-1" 
+                                    id="exampleModal" 
+                                    aria-labelledby="exampleModalLabel"
+                            >
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header text-center">
@@ -163,7 +175,9 @@
                             </div>
                             <button class="btn btn-primary" 
                                     type="button" 
-                                    style="height: 42px;width: 94px;margin: 8px 30px;background: #E75C25;border-color: #E75C25;" 
+                                    style="height: 42px;width: 94px;
+                                            margin: 8px 30px;
+                                            background: #E75C25;border-color: #E75C25;"
                                     data-toggle="modal" 
                                     data-target="#exampleModal"
                             >
@@ -175,9 +189,4 @@
             </div>
         </div>
     </div>
-    @if(@isset($errorMsg))
-        <script>
-            alert("{{$errorMsg}}");
-        </script>
-    @endif
 @endsection

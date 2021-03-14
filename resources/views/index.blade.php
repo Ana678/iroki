@@ -50,15 +50,41 @@
 
 <body>
 
-    <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav" style="background: rgba(0,0,0,0);border-color: rgba(0,0,0,0);">
-        <div class="row d-flex" style="padding-right: 0;padding-left: 0; flex-wrap: wrap; width: 100%;margin-right: auto; margin-left: auto; align-items:center;justify-content: space-between;max-width: 1140px;">
-            <a class="navbar-brand js-scroll-trigger" href="#" style="color: #42424c;font-family: Poppins, sans-serif;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-intersect" style="font-size: 35px;">
-                    <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm5 10v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2v5a2 2 0 0 1-2 2H5zm6-8H6a2 2 0 0 0-2 2v5H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2z"></path>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top" 
+            id="mainNav" 
+            style="background: rgba(0,0,0,0);border-color: rgba(0,0,0,0);"
+    >
+        <div class="row d-flex" 
+                style="padding-right: 0;padding-left: 0; flex-wrap: wrap; width: 100%;margin-right: auto; margin-left: auto; align-items:center;justify-content: space-between;max-width: 1140px;"
+        >
+            <a class="navbar-brand js-scroll-trigger" 
+                href="#" 
+                style="color: #42424c;font-family: Poppins, sans-serif;"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                        width="1em" 
+                        height="1em" 
+                        viewBox="0 0 16 16" 
+                        fill="currentColor" 
+                        class="bi bi-intersect" 
+                        style="font-size: 35px;"
+                >
+                    <path fill-rule="evenodd" 
+                            d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm5 10v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2v5a2 2 0 0 1-2 2H5zm6-8H6a2 2 0 0 0-2 2v5H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2z"
+                    ></path>
                 </svg>&nbsp;iroki
             </a>
             <a class="navbar-brand js-scroll-trigger" href="#" style="color: rgb(35,39,41);font-size: 23px;"></a>
-            <button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu" style="border-color: rgb(66,66,76);padding: 4px 8px;">
+            <button data-toggle="collapse" 
+                    class="navbar-toggler navbar-toggler-right" 
+                    data-target="#navbarResponsive" 
+                    type="button" 
+                    aria-controls="navbarResponsive" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation" 
+                    value="Menu" 
+                    style="border-color: rgb(66,66,76);padding: 4px 8px;"
+            >
             <i class="fa fa-bars" style="color: rgb(66,66,76);"></i>
             </button>
 
@@ -80,8 +106,8 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col-lg-6 offset-lg-5 mx-auto">
-                    <p class="text-right intro-text" style="color: #42424c;font-size: 30px;font-family: Poppins, sans-serif;font-weight: 700;line-height: 1.4;"><strong>Decida entre o que você quer e o que pode comprar.</strong></p>
-                    <p class="text-right intro-text" style="font-family: Poppins, sans-serif;font-size: 20px;color: #42424c;">A solução perfeita para você que deseja organizar sua lista de compras para o final do mês.</p><a class="btn btn-link float-right btn-circle" role="button" href="login" style="color: #42424c;padding-top: 3px;padding-bottom: 3px;margin-right: 20%;border-top-color: rgb(52,58,64);border-right-color: rgb(52,58,64);border-bottom-color: rgb(52,58,64);border-left-color: #42424c;font-family: Poppins, sans-serif;" align="right"><i class="fa fa-angle-double-right animated" style="color: #42424c;"></i></a>
+                    <p class="text-right intro-text" style="color: #42424c;font-size: 25px;font-family: Poppins, sans-serif;font-weight: 700;line-height: 1.4;"><strong>A solução que une o que você quer com o que você pode comprar.</strong></p>
+                    <p class="text-right intro-text" style="font-family: Poppins, sans-serif;font-size: 18px;color: #42424c;">Perfeito para você que deseja organizar sua lista de compras para o final do mês.</p><a class="btn btn-link float-right btn-circle" role="button" href="login" style="color: #42424c;padding-top: 3px;padding-bottom: 3px;margin-right: 20%;border-top-color: rgb(52,58,64);border-right-color: rgb(52,58,64);border-bottom-color: rgb(52,58,64);border-left-color: #42424c;font-family: Poppins, sans-serif;" align="right"><i class="fa fa-angle-double-right animated" style="color: #42424c;"></i></a>
                 </div>
             </div>
         </div>

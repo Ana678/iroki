@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Family;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\File;
+
+use App\Models\User;
+use App\Models\Family;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Task;
+use App\Models\Message;
 
 
 class EventController extends Controller{
@@ -74,18 +77,13 @@ class EventController extends Controller{
         return view('novaSenha');
     }
 
-    public function primeiroLogin(){
+    public function Login1(){
         $sessao = auth()->user();
-        return view('login.primeiroLogin',['sessao' => $sessao]);
+        return view('login.Login1', ['sessao' => $sessao]);
     }
 
-    public function primeiroLogin2(){
-        return view('login.primeiroLogin2');
-    }
-
-    public function normalLogin(){
-        $sessao = auth()->user();
-        return view('login.normalLogin', ['sessao' => $sessao]);
+    public function Login2(){
+        return view('login.Login2');
     }
 
     public function profile(){
@@ -125,6 +123,7 @@ class EventController extends Controller{
 
         $products = Product::where('category_id', $categoryID)
                         ->where('family_id', $sessao->family_id)
+                        ->where('status', 0)
                         ->get();
 
         return view('categoryDetail', [
@@ -141,47 +140,17 @@ class EventController extends Controller{
         $sessao = auth()->user();
         $family = Family::where('id', $sessao->family_id)->first();
         $modalCategories = Category::orderBy('name')->get();
+        $tasks = Task::where('family_id', $sessao->family_id)->get();
+        $messages = Message::where('family_id', $sessao->family_id)->get();
 
         return view('dashboard', [
             'sessao' => $sessao, 
             'family' => $family,
-            'modalCategories' => $modalCategories
+            'modalCategories' => $modalCategories,
+            'tasks' => $tasks,
+            'messages' => $messages
         ]);
     }
-
-    public function modalError($id){
-
-        $sessao = auth()->user();
-        $modalCategories = Category::orderBy('name')->get();
-
-        if($id == 0){
-            
-            $family = Family::where('id', $sessao->family_id)->first();
-            
-            return view('/dashboard', [
-                'sessao' => $sessao, 
-                'family' => $family,
-                'modalCategories' => $modalCategories,
-                'errorMsg' => "O nome e a quantidade devem ser informados!"
-            ]);
-        }else{
-
-            $category = Category::where('id', $id)->first();
-
-            $products = Product::where('category_id', $id)
-                            ->where('family_id', $sessao->family_id)
-                            ->get();
-
-            return view('/categoryDetail', [
-                            'sessao' => $sessao, 
-                            'products' => $products, 
-                            'category' => $category,
-                            'modalCategories' => $modalCategories,
-                            'errorMsg' => "O nome e a quantidade devem ser informados!"
-            ]);
-        }
-    }
-
 
     public function updateProfileImage(Request $request){
         $sessao = auth()->user();
@@ -214,15 +183,24 @@ class EventController extends Controller{
 
         $user = User::where('email', $request->email)->first();
 
-        if($request->email == $user->email && $request->email != $sessao->email){
-
-            return redirect('profileEmailError');
+        
+        if(@isset($user->email)){
+            //Email ocupado
+            if($user->email == $request->email){
+                //Email novo igual ao antigo
+                if($request->name != $sessao->name){
+                    //Porém o nome é diferente
+                    User::where('id',$sessao->id)->update(['name' => $request->name]);
+                }
+                return redirect('profile');
+            }
+            return $this->profileEmailError();
         }
         
         $email = $request->email;
 
         User::where('id',$sessao->id)->update([
-            'name' => $name,
+            'name' => $request->name,
             'email' => $email
         ]);
 
