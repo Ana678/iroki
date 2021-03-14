@@ -46,6 +46,7 @@ Route::post('updateProfileData', [EventController::class, 'updateProfileData'])-
 Route::get('categoryDetail/{id}', [EventController::class, 'categoryDetail'])->middleware('auth');
 
 Route::get('dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+Route::get('modalError/{id}', [EventController::class, 'modalError'])->middleware('auth');
 
 Route::get('cadastroMembro', function(){
     return view('cadastroMembro');

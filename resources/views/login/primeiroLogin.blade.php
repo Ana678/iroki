@@ -13,10 +13,20 @@
                                 <h4 class="text-dark mb-4" style="color: rgb(90, 92, 105);">Olá {{$sessao->name}}, seja muito bem vindo(a) ao iroki!</h4>
                             </div>
                             <form class="user">
-                                <div class="form-group row justify-content-center"><small class="form-text text-muted" style="margin: 12px 0px 0px;font-size: 14px;">Gostaria de cadastrar alguma coisa na lista de afazeres da família?</small></div>
-                                <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nome da Tarefa" name="email"></div>
+                                <div class="form-group row justify-content-center">
+                                    <small class="form-text text-muted" style="margin: 12px 0px 0px;font-size: 14px;">
+                                        Gostaria de cadastrar alguma coisa na lista de afazeres da família?
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nome da Tarefa" name="email">
+                                </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C25;border-color: #E75C25;">Cadastrar Este e Outro Item</button></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C25;border-color: #E75C25;">
+                                            Cadastrar Este e Outro Item
+                                        </button>
+                                    </div>
                                     <div class="col-sm-6"><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C25;border-color: #E75C25;">Registar Apenas Este Item<br></button></div>
                                 </div>
                                 <hr>

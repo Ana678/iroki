@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Family;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 
 class FamilyController extends Controller
@@ -125,19 +126,34 @@ class FamilyController extends Controller
 
     public function addProduct(Request $request){
 
-        $sessao = auth()->user();
+        if(!@isset($request->name) || !@isset($request->quantity)){
+            if($_POST['screen'] == 'dashboard'){
+                return redirect('modalError/0');
+            }
+            if($_POST['screen'] == 'categoryDetail'){
+                return redirect('modalError/'.$request->category);
+            }
+        }else{
+        
+            $sessao = auth()->user();
 
-        $product = new Product;
+            $product = new Product;
 
-        $product->name = $request->name;
-        $product->quantity = $request->quantity;
-        $product->description = $request->description;
-        $product->bought = 0;
-        $product->family_id = $sessao->family_id;
-        $product->category_id = $request->category;
+            $product->name = $request->name;
+            $product->quantity = $request->quantity;
+            $product->description = $request->description;
+            $product->bought = 0;
+            $product->family_id = $sessao->family_id;
+            $product->category_id = $request->category;
 
-        $product->save();
-        return redirect('dashboard');
+            $product->save();
 
+            if($_POST['screen'] == 'dashboard'){
+                return redirect('dashboard');
+            }
+            if($_POST['screen'] == 'categoryDetail'){
+                return redirect('categoryDetail/'.$request->category);
+            }
+        }
     }
 }

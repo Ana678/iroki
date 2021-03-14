@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('quantity');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->boolean('bought');
             $table->foreignId('family_id')->constrained();
             $table->foreignId('category_id')->constrained();

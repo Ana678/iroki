@@ -61,7 +61,13 @@ class EventController extends Controller{
     }
 
     public function validacao(){
-        return view('validacao');
+        $sessao = auth()->user();
+        if($sessao->master == 1){
+            return view('validacao');
+        }else{
+            return redirect('dashboard');
+        }
+        
     }
 
     public function novaSenha(){
@@ -78,7 +84,8 @@ class EventController extends Controller{
     }
 
     public function normalLogin(){
-        return view('normalLogin');
+        $sessao = auth()->user();
+        return view('login.normalLogin', ['sessao' => $sessao]);
     }
 
     public function profile(){
@@ -114,7 +121,7 @@ class EventController extends Controller{
 
         $category = Category::where('id', $categoryID)->first();
 
-        $modalCategories = Category::all();
+        $modalCategories = Category::orderBy('name')->get();
 
         $products = Product::where('category_id', $categoryID)
                         ->where('family_id', $sessao->family_id)
@@ -133,13 +140,46 @@ class EventController extends Controller{
     {
         $sessao = auth()->user();
         $family = Family::where('id', $sessao->family_id)->first();
-        $modalCategories = Category::all();
+        $modalCategories = Category::orderBy('name')->get();
 
         return view('dashboard', [
             'sessao' => $sessao, 
             'family' => $family,
             'modalCategories' => $modalCategories
         ]);
+    }
+
+    public function modalError($id){
+
+        $sessao = auth()->user();
+        $modalCategories = Category::orderBy('name')->get();
+
+        if($id == 0){
+            
+            $family = Family::where('id', $sessao->family_id)->first();
+            
+            return view('/dashboard', [
+                'sessao' => $sessao, 
+                'family' => $family,
+                'modalCategories' => $modalCategories,
+                'errorMsg' => "O nome e a quantidade devem ser informados!"
+            ]);
+        }else{
+
+            $category = Category::where('id', $id)->first();
+
+            $products = Product::where('category_id', $id)
+                            ->where('family_id', $sessao->family_id)
+                            ->get();
+
+            return view('/categoryDetail', [
+                            'sessao' => $sessao, 
+                            'products' => $products, 
+                            'category' => $category,
+                            'modalCategories' => $modalCategories,
+                            'errorMsg' => "O nome e a quantidade devem ser informados!"
+            ]);
+        }
     }
 
 
@@ -188,68 +228,6 @@ class EventController extends Controller{
 
         return redirect('profile');
         
-    }
-
-    public function inserirCategoriasPredefinidas(){
-
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-        
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-                
-        Category::fistOrCreate([
-            'name' => 'Alimentos Básicos',
-        ],[
-            'icon' => ''
-        ]);
-        
-
-
-
-
     }
 
 }

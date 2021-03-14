@@ -37,7 +37,7 @@
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <a href="primeiroLogin">
+                                        <a href="normalLogin">
                                             <button class="btn btn-primary btn-block text-white btn-user" 
                                                     type="button" 
                                                     style="background: #E75C25;border-color: #E75C25;"

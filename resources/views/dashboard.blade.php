@@ -96,6 +96,8 @@
                                     <button class="btn btn-warning" 
                                             style="background: #e75c25;border-color: #e75c25;" 
                                             type="submit"
+                                            name="screen"
+                                            value="dashboard"
                                             >
                                             Salvar
                                         </button>
@@ -217,4 +219,9 @@
             </div>
         </div>
     </div>
+    @if(@isset($errorMsg))
+        <script>
+            alert("{{$errorMsg}}");
+        </script>
+    @endif
 @endsection

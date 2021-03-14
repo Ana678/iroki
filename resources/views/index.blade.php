@@ -12,9 +12,44 @@
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+    
+    <?php
+        use App\Models\Category;
+
+        Category::firstOrCreate(['name' => 'Alimentos Básicos'],['icon' => 'fas fa-shopping-basket']);
+        
+        Category::firstOrCreate(['name' => 'Cereais'],['icon' => 'fab fa-pagelines']);
+                
+        Category::firstOrCreate(['name' => 'Enlatados'],['icon' => 'icon ion-soup-can']);
+                
+        Category::firstOrCreate(['name' => 'Frios e Congelados'],['icon' => 'fas fa-snowflake']);
+                
+        Category::firstOrCreate(['name' => 'Açougue e Peixes'],['icon' => 'fas fa-store']);
+                
+        Category::firstOrCreate(['name' => 'Laticínios'],['icon' => 'fas fa-cheese']);
+                
+        Category::firstOrCreate(['name' => 'Bebidas'],['icon' => 'fas fa-glass-cheers']);
+                
+        Category::firstOrCreate(['name' => 'Padaria'],['icon' => 'fa fa-birthday-cake']);
+
+        Category::firstOrCreate(['name' => 'Guloseimas'],['icon' => 'fas fa-ice-cream']);
+                
+        Category::firstOrCreate(['name' => 'Itens de Pets'],['icon' => 'icon ion-ios-paw-outline']);
+        
+        Category::firstOrCreate(['name' => 'Frutas e Vegetais'],['icon' => 'far fa-lemon']);
+
+        Category::firstOrCreate(['name' => 'Higiene Pessoal'],['icon' => 'fas fa-toilet-paper']);
+
+        Category::firstOrCreate(['name' => 'Limpeza Doméstica'],['icon' => 'fas fa-broom']);
+
+        Category::firstOrCreate(['name' => 'Utilidades'],['icon' => 'fa fa-star']);
+
+        Category::firstOrCreate(['name' => 'Outros'],['icon' => 'icon ion-ios-football']);
+    ?>
 </head>
 
 <body>
+
     <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav" style="background: rgba(0,0,0,0);border-color: rgba(0,0,0,0);">
         <div class="row d-flex" style="padding-right: 0;padding-left: 0; flex-wrap: wrap; width: 100%;margin-right: auto; margin-left: auto; align-items:center;justify-content: space-between;max-width: 1140px;">
             <a class="navbar-brand js-scroll-trigger" href="#" style="color: #42424c;font-family: Poppins, sans-serif;">

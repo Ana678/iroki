@@ -16,8 +16,11 @@
 
     <?php
         use App\Models\Category;
+        use App\Models\Product;
 
-        $navbarCategories = Category::all();
+        $count = 0;
+
+        $navbarCategories = Category::orderBy('name')->get();
     ?>
 
 </head>
@@ -48,16 +51,38 @@
                         </a>
                     </li>
 
+
                     @foreach($navbarCategories as $navbarCategory)
-                        <li class="nav-item">
-                            <form action="categoryDetail">
-                                    <a class="nav-link" href="/categoryDetail/{{$navbarCategory->id}}">
-                                        <i class="{{$navbarCategory->icon}}"></i>
-                                        <span>{{$navbarCategory->name}}</span>
-                                    </a>
-                            </form>
-                        </li>
+                        <?php
+                            $familyCategoryProduct = Product::where('family_id', $sessao->family_id)
+                                                            ->where('category_id', $navbarCategory->id)
+                                                            ->first();
+                        ?>
+
+                        @if(@isset($familyCategoryProduct->category_id))
+                            <li class="nav-item">
+                                <form action="categoryDetail">
+                                        <a class="nav-link" href="/categoryDetail/{{$navbarCategory->id}}">
+                                            <i class="{{$navbarCategory->icon}}"></i>
+                                            <span>{{$navbarCategory->name}}</span>
+                                        </a>
+                                </form>
+                            </li>
+                        @else
+                            <?php
+                                $count+=1;
+                            ?>
+                        @endif
                     @endforeach
+                    @if($count == 15)
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    <span>
+                                        Você não possui nenhum produto cadastrado!
+                                    </span>
+                                </a>
+                            </li>
+                    @endif
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
