@@ -76,7 +76,7 @@
                         @if (@isset($family->family_photo_path))
                             <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/family/{{$family->family_photo_path}}">    
                         @else
-                            <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/standardFamily.jpg">
+                            <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/family/standardFamily.jpg">
                         @endif
                         @if($sessao->master == 1)
                         <div class="mb-3">

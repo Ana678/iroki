@@ -123,9 +123,15 @@
                 <div class="card shadow mb-4 align-items-center">
                     <div class="card-body text-center">
                         @if (@isset($family->family_photo_path))
-                            <img class="img-no-padding img-responsive img-fluid" src="assets/img/family/{{$family->family_photo_path}}">    
+                            <img class="img-no-padding img-responsive img-fluid" 
+                                 src="assets/img/family/{{$family->family_photo_path}}"
+                                 style="max-height:400px"
+                            >
                         @else
-                            <img class="img-no-padding img-responsive img-fluid" src="assets/img/standardFamily.jpg">
+                            <img class="img-no-padding img-responsive img-fluid" 
+                                 src="assets/img/family/standardFamily.jpg"
+                                 style="max-height:400px"
+                            >
                         @endif
                     </div>
                 </div>
