@@ -12,7 +12,20 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header text-center">
-                                <h4 class="modal-title" style="color: rgb(90,92,105);"><strong>Adicionar Produto</strong></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title" style="color: rgb(90,92,105);">
+                                    <strong>
+                                        Adicionar Produto
+                                    </strong>
+                                </h4>
+                                <button type="button" 
+                                        class="close" 
+                                        data-dismiss="modal" 
+                                        aria-label="Close"
+                                >
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
                             </div>
                             <div class="modal-body">
                                 <form action="/addProduct" method="POST">

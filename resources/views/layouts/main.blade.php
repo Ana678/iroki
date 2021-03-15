@@ -54,7 +54,7 @@
 
                     @foreach($navbarCategories as $navbarCategory)
                         <?php
-                            $familyCategoryProduct = Product::where('family_id', $sessao->family_id)
+                            $familyCategoryProduct = Product::where('family_id', Auth::user()->family_id)
                                                             ->where('category_id', $navbarCategory->id)
                                                             ->first();
                         ?>
@@ -115,11 +115,11 @@
                                         data-toggle="dropdown" 
                                         href="#">
                                         <span class="d-none d-lg-inline mr-2 text-gray-600 small">
-                                            &nbsp;{{ $sessao->name }}
+                                            &nbsp;{{ Auth::user()->name }}
                                         </span>
                                         <img class="border rounded-circle img-profile"
-                                            @if(@isset($sessao->profile_photo_path))
-                                                src="/assets/img/avatars/{{$sessao->profile_photo_path}}"
+                                            @if(@isset(Auth::user()->profile_photo_path))
+                                                src="/assets/img/avatars/{{Auth::user()->profile_photo_path}}"
                                             @else
                                                 src="/assets/img/avatars/avatarPadrao.jpeg"
                                             @endif
