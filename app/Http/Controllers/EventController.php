@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Task;
 use App\Models\Message;
+use App\Models\Phrase;
 
 
 class EventController extends Controller{
@@ -144,12 +145,16 @@ class EventController extends Controller{
         $tasks = Task::where('family_id', $sessao->family_id)->get();
         $messages = Message::where('family_id', $sessao->family_id)->get();
 
+        $phraseId = rand(1, Phrase::all()->count());
+        $phrase = Phrase::where('id', $phraseId)->first();
+
         return view('dashboard', [
             'sessao' => $sessao, 
             'family' => $family,
             'modalCategories' => $modalCategories,
             'tasks' => $tasks,
-            'messages' => $messages
+            'messages' => $messages,
+            'phrase' => $phrase
         ]);
     }
 

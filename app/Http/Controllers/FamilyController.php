@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Task;
 use App\Models\Message;
+use App\Models\Phrase;
 
 class FamilyController extends Controller
 {
@@ -231,6 +232,8 @@ class FamilyController extends Controller
                 $family = Family::where('id', $sessao->family_id)->first();
                 $tasks = Task::where('family_id', $sessao->family_id)->get();
                 $messages = Message::where('family_id', $sessao->family_id)->get();
+                $phraseId = rand(1, Phrase::all()->count());
+                $phrase = Phrase::where('id', $phraseId);
 
                 return view('/dashboard', [
                     'sessao' => $sessao, 
@@ -238,6 +241,7 @@ class FamilyController extends Controller
                     'modalCategories' => $modalCategories,
                     'tasks' => $tasks,
                     'messages' => $messages,
+                    'phrase' => $phrase,
                     'errorMsg' => "O nome e a quantidade devem ser informados!"
                 ]);
 
@@ -264,6 +268,8 @@ class FamilyController extends Controller
                 $family = Family::where('id', $sessao->family_id)->first();
                 $tasks = Task::where('family_id', $sessao->family_id)->get();
                 $messages = Message::where('family_id', $sessao->family_id)->get();
+                $phraseId = rand(1, Phrase::all()->count());
+                $phrase = Phrase::where('id', $phraseId);
 
                 return view('/dashboard', [
                     'sessao' => $sessao, 
@@ -271,6 +277,7 @@ class FamilyController extends Controller
                     'modalCategories' => $modalCategories,
                     'tasks' => $tasks,
                     'messages' => $messages,
+                    'phrase' => $phrase,
                     'errorMsg' => "O título e a hora devem ser informados!"
                 ]);
             break;

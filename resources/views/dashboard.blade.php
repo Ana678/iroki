@@ -286,11 +286,11 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
                                 <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
-                                    <span>Biblia jesus 1189/30</span>
+                                    <span>{{$phrase->author}}</span>
                                 </div>
                                 <div class="text-dark font-weight-bold h5 mb-0">
                                     <span>
-                                        <em>a familia é a luz!</em>
+                                        <em>{{$phrase->text}}</em>
                                     </span>
                                 </div>
                             </div>

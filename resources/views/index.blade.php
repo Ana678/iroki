@@ -15,36 +15,45 @@
     
     <?php
         use App\Models\Category;
+        use App\Models\Phrase;
 
         Category::firstOrCreate(['name' => 'Alimentos Básicos'],['icon' => 'fas fa-shopping-basket']);
-        
         Category::firstOrCreate(['name' => 'Cereais'],['icon' => 'fab fa-pagelines']);
-                
         Category::firstOrCreate(['name' => 'Enlatados'],['icon' => 'icon ion-soup-can']);
-                
         Category::firstOrCreate(['name' => 'Frios e Congelados'],['icon' => 'fas fa-snowflake']);
-                
         Category::firstOrCreate(['name' => 'Açougue e Peixes'],['icon' => 'fas fa-store']);
-                
         Category::firstOrCreate(['name' => 'Laticínios'],['icon' => 'fas fa-cheese']);
-                
         Category::firstOrCreate(['name' => 'Bebidas'],['icon' => 'fas fa-glass-cheers']);
-                
         Category::firstOrCreate(['name' => 'Padaria'],['icon' => 'fa fa-birthday-cake']);
-
         Category::firstOrCreate(['name' => 'Guloseimas'],['icon' => 'fas fa-ice-cream']);
-                
         Category::firstOrCreate(['name' => 'Itens de Pets'],['icon' => 'icon ion-ios-paw-outline']);
-        
         Category::firstOrCreate(['name' => 'Frutas e Vegetais'],['icon' => 'far fa-lemon']);
-
         Category::firstOrCreate(['name' => 'Higiene Pessoal'],['icon' => 'fas fa-toilet-paper']);
-
         Category::firstOrCreate(['name' => 'Limpeza Doméstica'],['icon' => 'fas fa-broom']);
-
         Category::firstOrCreate(['name' => 'Utilidades'],['icon' => 'fa fa-star']);
-
         Category::firstOrCreate(['name' => 'Outros'],['icon' => 'icon ion-ios-football']);
+
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Não é o que nós temos na vida, mas <b>quem</b> nós temos em nossas vidas que importa']);
+        Phrase::firstOrCreate(['author' => 'Desmond Tutu'],['text' => 'Você não escolhe sua família. Eles são um presente de Deus para você, assim como você é para eles']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'A felicidade é multiplicada quando dividida com a família']);
+        Phrase::firstOrCreate(['author' => 'Dalai Lama'],['text' => 'Só existem dois dias do ano em que você não pode fazer nada: um se chama ontem e outro amanhã']);
+        Phrase::firstOrCreate(['author' => 'Benjamin Franklin'],['text' => 'Paz e harmonia: eis a verdadeira riqueza de uma família.']);
+        Phrase::firstOrCreate(['author' => ''],['text' => 'Família é como uma canoa em um oceano. Todos remam juntos com um mesmo propósito']);
+        Phrase::firstOrCreate(['author' => 'J.K. Rowling'],['text' => 'A família é um salva-vidas no mar agitado da vida.']);
+        Phrase::firstOrCreate(['author' => 'George Bernard Shaw'],['text' => 'Uma família feliz nada mais é que o paraíso antecipado.']);
+        Phrase::firstOrCreate(['author' => 'Michael J. Fox'],['text' => 'Família não é uma coisa importante. É tudo.']);
+        Phrase::firstOrCreate(['author' => 'Alex Haley'],['text' => 'De todas as maneiras possíveis, a família é um laço com o passado e a ponte para o futuro.']);
+        Phrase::firstOrCreate(['author' => 'Brad Henry'],['text' => 'A família é a bússola que nos guia. A inspiração para voarmos alto e o conforto quando ocasionalmente falharmos.']);
+        Phrase::firstOrCreate(['author' => 'Mariana'],['text' => 'Quem tem uma família feliz, unida e cheia de amor não precisa de mais nada.']);
+        Phrase::firstOrCreate(['author' => 'Charles Kuralt'],['text' => 'O amor da família e a admiração dos amigos é muito mais importante do que a riqueza e os privilégios.']);
+        Phrase::firstOrCreate(['author' => 'George Santayana'],['text' => 'A família é uma das obras-primas da natureza.']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Família: o nosso bem mais precioso. Nutre e guarde este amor']);
+        Phrase::firstOrCreate(['author' => 'Brad Henry'],['text' => 'A família é a bússola que nos guia. A inspiração para voarmos alto e o conforto quando ocasionalmente falharmos.']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Família é onde nossa história começa.']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Família: base de tudo.']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Quando as raízes são profundas, não há razão para temer o ventor']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Uma família unida é a base que sustenta todos os seus membros']);
+        Phrase::firstOrCreate(['author' => 'Autor Desconhecido'],['text' => 'Uma família unida pode ser um verdadeiro alicerce na construção da felicidade']);
     ?>
 </head>
 
