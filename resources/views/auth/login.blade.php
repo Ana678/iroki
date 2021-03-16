@@ -78,7 +78,7 @@
                             </form>
                                 <div class="text-center">
                                 @if (Route::has('password.request'))
-                                    <a class="small" href="inserirEmail" style="color: #68aea1;">
+                                    <a class="small" href="forgot-password" style="color: #68aea1;">
                                         <br>
                                         {{ __('Esqueceu a senha?') }}
                                         <br>
