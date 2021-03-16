@@ -37,6 +37,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <x-jet-validation-errors class="mb-4" />
                                 <div class="form-group">
                                     <input  class="form-control form-control-user" 
                                             type="email" 
