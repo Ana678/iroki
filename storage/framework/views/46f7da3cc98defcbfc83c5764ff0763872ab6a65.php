@@ -16,7 +16,7 @@
             ?>
                     <li>
                         <?php
-                            if(e($error) == "These credentials do not match our records."){
+                            /*if(e($error) == "These credentials do not match our records."){
                                 echo e("Esse usuário não foi encontrado.");
                             }else if(e($error) == "The email has already been taken."){
                                 echo e("Esse email já está ocupado.");
@@ -24,7 +24,16 @@
                                 echo e("A confirmação de senha não foi compatível");
                             }else if(e($error) == "The password must be at least 8 characters."){
                                 echo e("A senha deve conter pelo menos 8 caracteres.");
+                            }else if(e($error) == "Please wait before retrying."){
+                                echo e("Por favor, espere antes de reenviar.");
+                            }*/
+
+                            if(e($error) == "The senha must be at least 8 characters."){
+                                echo (e("A senha deve conter pelo menos 8 caracteres."));
+                            }else{
+                                echo e($error);
                             }
+                            
                         ?>
                     </li>
             <?php 

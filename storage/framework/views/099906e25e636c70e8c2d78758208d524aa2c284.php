@@ -254,8 +254,12 @@
                                         </strong>
                                     </h6>
                                     <span class="text-xs">
-                                        <?php echo e(substr($task->date, 10, 6)); ?>
-
+                                        <?php echo e(substr($task->date, 10, 6)); ?> 
+                                        <?php 
+                                            if(isset($task->description)){ 
+                                                echo " - ".$task->description; 
+                                            } 
+                                            ?>
                                     </span>
                                 </div>
                                 <div class="col-auto">
@@ -267,7 +271,6 @@
                                                 id="<?php echo 'formCheck-'.$checkboxCount;?>"
                                                 onchange="document.forms['deleteTask<?php echo e($task->id); ?>'].submit()"
                                             >
-                                            <!--O que esse checkbox faz??-->
                                             <label class="custom-control-label" 
                                                     for="<?php echo 'formCheck-'.$checkboxCount;?>"
                                             ></label>
@@ -293,7 +296,7 @@
                                 </div>
                                 <div class="text-dark font-weight-bold h5 mb-0">
                                     <span>
-                                        <em><?php echo e($phrase->text); ?></em>
+                                        <em>- <?php echo e($phrase->text); ?></em>
                                     </span>
                                 </div>
                             </div>
@@ -311,7 +314,7 @@
                                         <span>Recado</span>
                                     </div>
                                     <div class="text-dark font-weight-bold h5 mb-0">
-                                        <span>-<?php echo e($message->message); ?></span>
+                                        <span>- <?php echo e($message->message); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-auto">

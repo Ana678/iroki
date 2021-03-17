@@ -28,15 +28,27 @@
                                 <?php echo csrf_field(); ?>
                                 <div class="form-group row justify-content-center">
                                     <small class="form-text text-muted" style="margin: 12px 0px 0px;font-size: 14px;">
-                                        Gostaria de deixar algum recado importante para sua família?
+                                        Gostaria de deixar algum recado importante para sua família? Até quando?
                                     </small>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input class="form-control form-control-user" 
                                             type="text"
                                             placeholder="Ex.: Maria lembre de lavar a louça" 
                                             name="message"
                                     >
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <input class="form-control form-control-user" 
+                                            type="date"
+                                            value="<?php 
+                                                $d= date('d')+1;
+                                                echo date('Y-m').'-'.$d;
+                                            ?>"
+                                            name="datemessage"
+                                    >
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
