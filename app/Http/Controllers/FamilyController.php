@@ -202,12 +202,13 @@ class FamilyController extends Controller
     public function addMessage(Request $request){
         $sessao = auth()->user();
 
-        if(!@isset($request->message)){
-            return view('login.Login2', ['errorMsg' => "Insira um texto para poder enviar um recado"]);
+        if(!@isset($request->message) || !@isset($request->datemessage)){
+            return view('login.Login2', ['errorMsg' => "Preencha todos os campos para poder cadastrar um recado"]);
         }
 
         $message = new Message;
 
+        $message->datemessage = $request->datemessage;
         $message->message = $request->message;
         $message->family_id = $sessao->family_id;
 
@@ -228,12 +229,13 @@ class FamilyController extends Controller
 
         switch($id){
             case 0:
-                
+                [EventController::class, 'validateDateMessage'];
                 $family = Family::where('id', $sessao->family_id)->first();
                 $tasks = Task::where('family_id', $sessao->family_id)->get();
                 $messages = Message::where('family_id', $sessao->family_id)->get();
                 $phraseId = rand(1, Phrase::all()->count());
-                $phrase = Phrase::where('id', $phraseId);
+                $phrase = Phrase::where('id', $phraseId)->first();
+
 
                 return view('/dashboard', [
                     'sessao' => $sessao, 
@@ -265,11 +267,13 @@ class FamilyController extends Controller
             break;
 
             case 20:
+                
+                [EventController::class, 'validateDateMessage'];
                 $family = Family::where('id', $sessao->family_id)->first();
                 $tasks = Task::where('family_id', $sessao->family_id)->get();
                 $messages = Message::where('family_id', $sessao->family_id)->get();
                 $phraseId = rand(1, Phrase::all()->count());
-                $phrase = Phrase::where('id', $phraseId);
+                $phrase = Phrase::where('id', $phraseId)->first();
 
                 return view('/dashboard', [
                     'sessao' => $sessao, 
@@ -307,4 +311,5 @@ class FamilyController extends Controller
 
         return redirect('dashboard');
     }
+
 }

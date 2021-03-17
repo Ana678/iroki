@@ -127,4 +127,4 @@
     <script src="assets/js/theme.js"></script>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\iroki\resources\views/index.blade.php ENDPATH**/ ?>

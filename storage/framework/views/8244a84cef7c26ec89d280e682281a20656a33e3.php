@@ -1,8 +1,8 @@
-@extends('layouts.main')
 
-@section('title', 'Dashboard - Brand')
 
-@section('content')
+<?php $__env->startSection('title', 'Dashboard - Brand'); ?>
+
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="d-sm-flex justify-content-between align-items-center mb-4">
             <h3 class="text-dark" style="color: rgb(90, 92, 105);margin-bottom: 15px;"><strong>Painel da Familia</strong></h3>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="modal-body">
                                 <form action="/addProduct" method="POST">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
                                     <div class="modal-body">
                                         <div class="form-row" style="margin: 15px -5px;">
                                             <div class="col">
@@ -73,11 +73,12 @@
                                                             name="category"
                                                     >
                                                         <optgroup label="Categorias">
-                                                            @foreach($modalCategories as $modalCategory)
-                                                                <option value="{{$modalCategory->id}}">
-                                                                    {{$modalCategory->name}}
+                                                            <?php $__currentLoopData = $modalCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modalCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <option value="<?php echo e($modalCategory->id); ?>">
+                                                                    <?php echo e($modalCategory->name); ?>
+
                                                                 </option>
-                                                            @endforeach
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </optgroup>
                                                     </select>
                                                 </div>
@@ -135,17 +136,17 @@
             <div class="col-lg-6 col-xl-6">
                 <div class="card shadow mb-4 align-items-center">
                     <div class="card-body text-center">
-                        @if (@isset($family->family_photo_path))
+                        <?php if(@isset($family->family_photo_path)): ?>
                             <img class="img-no-padding img-responsive img-fluid" 
-                                 src="assets/img/family/{{$family->family_photo_path}}"
+                                 src="assets/img/family/<?php echo e($family->family_photo_path); ?>"
                                  style="max-height:400px"
                             >
-                        @else
+                        <?php else: ?>
                             <img class="img-no-padding img-responsive img-fluid" 
                                  src="assets/img/family/standardFamily.jpg"
                                  style="max-height:400px"
                             >
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -165,7 +166,7 @@
                                             <h4 class="modal-title" style="color: rgb(90,92,105);"><strong>Adicionar Afazeres</strong></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
                                         <form action="/addTask" method="POST">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="title">
@@ -242,17 +243,18 @@
                         <?php
                             $checkboxCount = 1;
                         ?>
-                        @foreach($tasks as $task)
+                        <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li class="list-group-item">
                             <div class="row align-items-center no-gutters">
                                 <div class="col mr-2">
                                     <h6 class="mb-0">
                                         <strong>
-                                            {{$task->title}}
+                                            <?php echo e($task->title); ?>
+
                                         </strong>
                                     </h6>
                                     <span class="text-xs">
-                                        {{substr($task->date, 10, 6)}} 
+                                        <?php echo e(substr($task->date, 10, 6)); ?> 
                                         <?php 
                                             if(isset($task->description)){ 
                                                 echo " - ".$task->description; 
@@ -261,13 +263,13 @@
                                     </span>
                                 </div>
                                 <div class="col-auto">
-                                    <form action="deleteTask/{{$task->id}}" method="POST" name="deleteTask{{$task->id}}">
-                                        @csrf
+                                    <form action="deleteTask/<?php echo e($task->id); ?>" method="POST" name="deleteTask<?php echo e($task->id); ?>">
+                                        <?php echo csrf_field(); ?>
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" 
                                                 type="checkbox"
                                                 id="<?php echo 'formCheck-'.$checkboxCount;?>"
-                                                onchange="document.forms['deleteTask{{$task->id}}'].submit()"
+                                                onchange="document.forms['deleteTask<?php echo e($task->id); ?>'].submit()"
                                             >
                                             <label class="custom-control-label" 
                                                     for="<?php echo 'formCheck-'.$checkboxCount;?>"
@@ -278,7 +280,7 @@
                             </div>
                         </li>
                         <?php $checkboxCount++; ?>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
             </div>
@@ -290,11 +292,11 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col mr-2">
                                 <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
-                                    <span>{{$phrase->author}}</span>
+                                    <span><?php echo e($phrase->author); ?></span>
                                 </div>
                                 <div class="text-dark font-weight-bold h5 mb-0">
                                     <span>
-                                        <em>- {{$phrase->text}}</em>
+                                        <em>- <?php echo e($phrase->text); ?></em>
                                     </span>
                                 </div>
                             </div>
@@ -302,7 +304,7 @@
                     </div>
                 </div>
             </div>
-            @foreach($messages as $message)
+            <?php $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-6 col-lg-8 col-xl-6 mb-4">
                     <div class="card shadow border-left-warning py-2">
                         <div class="card-body">
@@ -312,7 +314,7 @@
                                         <span>Recado</span>
                                     </div>
                                     <div class="text-dark font-weight-bold h5 mb-0">
-                                        <span>- {{$message->message}}</span>
+                                        <span>- <?php echo e($message->message); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -322,7 +324,8 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\iroki\resources\views//dashboard.blade.php ENDPATH**/ ?>

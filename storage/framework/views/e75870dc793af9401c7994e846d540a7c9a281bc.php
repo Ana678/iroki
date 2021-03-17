@@ -25,7 +25,7 @@
                                 <h4 class="text-dark mb-4" style="color: rgb(90, 92, 105);">Continuando . . .</h4>
                             </div>
                             <form class="user" action="addMessage" method="POST">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <div class="form-group row justify-content-center">
                                     <small class="form-text text-muted" style="margin: 12px 0px 0px;font-size: 14px;">
                                         Gostaria de deixar algum recado importante para sua família? Até quando?
@@ -86,15 +86,15 @@
             </div>
         </div>
     </div>
-    @if(@isset($errorMsg))
+    <?php if(@isset($errorMsg)): ?>
         <script>
-            alert('{{$errorMsg}}')
+            alert('<?php echo e($errorMsg); ?>')
         </script>
-    @endif
+    <?php endif; ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\iroki\resources\views/login/Login2.blade.php ENDPATH**/ ?>

@@ -139,6 +139,7 @@ class EventController extends Controller{
 
     public function dashboard()
     {
+        $this->validateDateMessage();
         $sessao = auth()->user();
         $family = Family::where('id', $sessao->family_id)->first();
         $modalCategories = Category::orderBy('name')->get();
@@ -211,6 +212,40 @@ class EventController extends Controller{
         ]);
 
         return redirect('profile');
+        
+    }
+
+    public function validateDateMessage(){
+        
+        $sessao = auth()->user();
+        $messages = Message::where('family_id', $sessao->family_id)->get();
+
+        $yToday = date('Y');
+        $mToday = date('m');
+        $dToday = date('d');
+
+        foreach($messages as $message){
+
+            $y = substr($message->datemessage, 0, 4);
+            $m = substr($message->datemessage, 5, 2);
+            $d = substr($message->datemessage, 8, 2);
+            
+            if($yToday > $y){
+                Message::where('id', $message->id)->delete();
+            }elseif($yToday == $y){
+                if($mToday > $m){
+                    Message::where('id', $message->id)->delete();
+                }elseif($mToday == $m){
+                    if($dToday >= $d){
+                        Message::where('id', $message->id)->delete();
+                    }
+                    //Dia atual < Dia do recado
+                }
+                //Mes atual < Mes do recado
+            }
+            //Ano atual < Ano do recado
+
+        }
         
     }
 
