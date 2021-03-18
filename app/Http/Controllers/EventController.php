@@ -88,34 +88,19 @@ class EventController extends Controller{
         return view('login.Login2');
     }
 
-    public function profile(){
+    public function profile($errorMsg = ''){
         $sessao = auth()->user();  
         $family = Family::where('id', $sessao->family_id)->first();
         $familyMembers = User::where('family_id', $family->id)->get();
-
-        return view('profile', [
-            'sessao' => $sessao,
-            'family' => $family,
-            'familyMembers' => $familyMembers
-        ]);
-    }
-
-    public function profileEmailError(){
-        $sessao = auth()->user();
-        $family = Family::where('id', $sessao->family_id)->first();
-        $familyMembers = User::where('family_id', $family->id)->get();
-
-        $msg = 'Este email já está ocupado';
-
         return view('profile', [
             'sessao' => $sessao,
             'family' => $family,
             'familyMembers' => $familyMembers,
-            'msg' => $msg
+            'errorMsg' => $errorMsg
         ]);
     }
 
-    public function categoryDetail($categoryID){
+    public function categoryDetail($categoryID, $errorMsg = ''){
 
         $sessao = auth()->user();
 
@@ -132,12 +117,13 @@ class EventController extends Controller{
                         'sessao' => $sessao, 
                         'products' => $products, 
                         'category' => $category,
-                        'modalCategories' => $modalCategories
+                        'modalCategories' => $modalCategories,
+                        'errorMsg' => $errorMsg
         ]);
            
     }
 
-    public function dashboard()
+    public function dashboard($errorMsg = '')
     {
         $this->validateDateMessage();
         $sessao = auth()->user();
@@ -155,7 +141,8 @@ class EventController extends Controller{
             'modalCategories' => $modalCategories,
             'tasks' => $tasks,
             'messages' => $messages,
-            'phrase' => $phrase
+            'phrase' => $phrase,
+            'errorMsg' => $errorMsg
         ]);
     }
 
@@ -186,14 +173,12 @@ class EventController extends Controller{
 
         $sessao = auth()->user();
         
-        $name = $request->name;
-
         $user = User::where('email', $request->email)->first();
 
         
         if(@isset($user->email)){
             //Email ocupado
-            if($user->email == $request->email){
+            if($user->email == $sessao->email){
                 //Email novo igual ao antigo
                 if($request->name != $sessao->name){
                     //Porém o nome é diferente
@@ -201,7 +186,7 @@ class EventController extends Controller{
                 }
                 return redirect('profile');
             }
-            return $this->profileEmailError();
+            return $this->profile('Este email já está ocupado');
         }
         
         $email = $request->email;

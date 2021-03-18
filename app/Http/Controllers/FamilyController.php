@@ -132,11 +132,12 @@ class FamilyController extends Controller
     public function addProduct(Request $request){
 
         if(!@isset($request->name) || !@isset($request->quantity)){
+            $eventController = new EventController;
             if($_POST['screen'] == 'dashboard'){
-                return $this->modalError(0);
+                return $eventController->dashboard('O nome e a quantidade devem ser informados!');
             }
             if($_POST['screen'] == 'categoryDetail'){
-                return $this->modalError($request->category);
+                return $eventController->categoryDetail($request->category, 'O nome e a quantidade devem ser informados!');
             }
         }else{
         
@@ -166,10 +167,12 @@ class FamilyController extends Controller
 
         if(!@isset($request->title) || !@isset($request->time)){
             if($_POST['screen'] == 'dashboard'){
-                return $this->modalError(20);
+                $eventController = new EventController;
+                return $eventController->dashboard('O título e a hora devem ser informados!');
             }
             if($_POST['screen'] == 'Login1' || $_POST['screen'] == 'Login1+'){
-                return $this->modalError(21);
+                $sessao = auth()->user();
+                return view('login.Login1', ['sessao' => $sessao, 'errorMsg' => "O título e a hora devem ser informados!"]);
             }
         }else{
         
@@ -181,7 +184,6 @@ class FamilyController extends Controller
 
             $task->title = $request->title;
             $task->date = $data;
-            //$task->time = $request->time;??????????????
             $task->description = $request->description;
             $task->family_id = $sessao->family_id;
 
@@ -221,77 +223,7 @@ class FamilyController extends Controller
         }
         
     }
-
-    public function modalError($id){
-
-        $sessao = auth()->user();
-        $modalCategories = Category::orderBy('name')->get();
-
-        switch($id){
-            case 0:
-                [EventController::class, 'validateDateMessage'];
-                $family = Family::where('id', $sessao->family_id)->first();
-                $tasks = Task::where('family_id', $sessao->family_id)->get();
-                $messages = Message::where('family_id', $sessao->family_id)->get();
-                $phraseId = rand(1, Phrase::all()->count());
-                $phrase = Phrase::where('id', $phraseId)->first();
-
-
-                return view('/dashboard', [
-                    'sessao' => $sessao, 
-                    'family' => $family,
-                    'modalCategories' => $modalCategories,
-                    'tasks' => $tasks,
-                    'messages' => $messages,
-                    'phrase' => $phrase,
-                    'errorMsg' => "O nome e a quantidade devem ser informados!"
-                ]);
-
-            break;
-
-            case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:case 15:
-                
-                $category = Category::where('id', $id)->first();
-
-                $products = Product::where('category_id', $id)
-                                ->where('family_id', $sessao->family_id)
-                                ->get();
-
-                return view('/categoryDetail', [
-                                'sessao' => $sessao, 
-                                'products' => $products, 
-                                'category' => $category,
-                                'modalCategories' => $modalCategories,
-                                'errorMsg' => "O nome e a quantidade devem ser informados!"
-                ]);
-            break;
-
-            case 20:
-                
-                [EventController::class, 'validateDateMessage'];
-                $family = Family::where('id', $sessao->family_id)->first();
-                $tasks = Task::where('family_id', $sessao->family_id)->get();
-                $messages = Message::where('family_id', $sessao->family_id)->get();
-                $phraseId = rand(1, Phrase::all()->count());
-                $phrase = Phrase::where('id', $phraseId)->first();
-
-                return view('/dashboard', [
-                    'sessao' => $sessao, 
-                    'family' => $family,
-                    'modalCategories' => $modalCategories,
-                    'tasks' => $tasks,
-                    'messages' => $messages,
-                    'phrase' => $phrase,
-                    'errorMsg' => "O título e a hora devem ser informados!"
-                ]);
-            break;
-            case 21:
-                $sessao = auth()->user();
-                return view('login.Login1', ['sessao' => $sessao, 'errorMsg' => "O título e a hora devem ser informados!"]);
-            break;
-        }
-    }
-
+    
     public function editProduct($productId){
         $sessao = auth()->user();
 

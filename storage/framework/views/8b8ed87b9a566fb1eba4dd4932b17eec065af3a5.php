@@ -48,8 +48,8 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="email">
-                                                    <?php if(@isset($msg)): ?>
-                                                        <strong style="color:red"><?php echo e($msg); ?></strong>
+                                                    <?php if($errorMsg != ''): ?>
+                                                        <strong style="color:red"><?php echo e($errorMsg); ?></strong>
                                                     <?php else: ?>
                                                         <strong>Email</strong>
                                                     <?php endif; ?>

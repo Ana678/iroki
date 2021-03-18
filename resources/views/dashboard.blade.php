@@ -325,4 +325,9 @@
             @endforeach
         </div>
     </div>
+    @if($errorMsg != '')
+        <script>
+            alert("{{$errorMsg}}");
+        </script>
+    @endif
 @endsection

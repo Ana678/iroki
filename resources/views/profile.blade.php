@@ -48,8 +48,8 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="email">
-                                                    @if(@isset($msg))
-                                                        <strong style="color:red">{{$msg}}</strong>
+                                                    @if($errorMsg != '')
+                                                        <strong style="color:red">{{$errorMsg}}</strong>
                                                     @else
                                                         <strong>Email</strong>
                                                     @endif
