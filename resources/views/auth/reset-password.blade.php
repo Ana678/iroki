@@ -1,36 +1,38 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.loginLayout')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('title', 'Recuperar senha')
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+@section('content')
+    <div class="container" style="display: flex;align-items: center;justify-content: center;">
+        <div class="card shadow-lg o-hidden border-0 my-5" style="width: 557px;min-width: 140px;">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col">
+                        <div class="p-5">
+                            <form class="user" method="POST" action="{{ route('password.update') }}">
+                                @csrf
+                                <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                                <input type="hidden" name="email" value="{{ $request->email }}" />
 
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-            <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                                <div class="form-group">
+                                    <div class="form-row justify-content-center align-items-center">
+                                        <h4 class="text-center text-dark mb-4" style="margin-top: 24px;">Nova senha</h4>
+                                    </div>
+                                </div>
+                                <x-jet-validation-errors class="mb-4" style="font-size:14px;color:red" />
+                                <div class="form-group">
+                                    <input class="form-control form-control-user" type="password" placeholder="Nova Senha" name="password" required autocomplete="new-password" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control form-control-user" type="password" placeholder="Repetir Nova Senha" name="password_confirmation" required autocomplete="new-password" />
+                                </div>
+                                <hr>
+                                <button class="btn btn-primary btn-block text-white btn-user" type="submit" style="margin-bottom: 10px;background: #E75C25;border-color: #E75C25;">{{ __('Redefinir Senha') }}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Reset Password') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection

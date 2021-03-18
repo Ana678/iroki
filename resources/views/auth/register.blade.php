@@ -27,7 +27,7 @@
                                     Crie sua conta!
                                 </h4>
                             </div>
-                            <x-jet-validation-errors class="mb-4" />
+                            <x-jet-validation-errors class="mb-4" style="font-size:14px;color:red" />
                             <form class="user" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">

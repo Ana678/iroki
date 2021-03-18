@@ -26,7 +26,7 @@ Route::get('registerPadrao', function(){return view('auth.registerPadrao');});
 Route::get('recuperarSenha', [EventController::class, 'recuperarSenha']);
 
 Route::get('inserirEmail', function(){
-    return view('auth.forgot-password');
+    return view('login.inserirEmail');
 });
 
 Route::get('novaSenha', [EventController::class, 'novaSenha']);

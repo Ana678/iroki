@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mb-4" style="font-size:14px;color:red" />
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
