@@ -15,7 +15,6 @@
     
     <?php
         use App\Models\Category;
-        use App\Models\Phrase;
 
         Category::firstOrCreate(['name' => 'Alimentos Básicos'],['icon' => 'fas fa-shopping-basket']);
         Category::firstOrCreate(['name' => 'Cereais'],['icon' => 'fab fa-pagelines']);

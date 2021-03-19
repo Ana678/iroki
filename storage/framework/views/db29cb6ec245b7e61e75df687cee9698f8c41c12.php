@@ -115,9 +115,6 @@
                                         >
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
-                                        <a class="dropdown-item" href="/deleteFamily/<?php echo e($sessao->family_id); ?>">
-                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Testando
-                                        </a>
                                         <a class="dropdown-item" href="/profile">
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil
                                         </a>
