@@ -30,6 +30,11 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->foreignId('family_id')
+            ->constrained()
+            ->onDelete('cascade');
+        });
         Schema::dropIfExists('tasks');
     }
 }

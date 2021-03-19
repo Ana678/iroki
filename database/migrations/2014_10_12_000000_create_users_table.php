@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('profile_photo_path')->nullable();
             $table->boolean('master');
-            $table->foreignId('family_id')->nullable();
+            $table->foreignId('family_id')->constrained();
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
@@ -36,6 +36,11 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('family_id')
+            ->constrained()
+            ->onDelete('cascade');
+        });
         Schema::dropIfExists('users');
     }
 }

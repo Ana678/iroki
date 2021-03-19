@@ -29,6 +29,11 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
+        Schema::table('messages', function (Blueprint $table) {
+            $table->foreignId('family_id')
+            ->constrained()
+            ->onDelete('cascade');
+        });
         Schema::dropIfExists('messages');
     }
 }

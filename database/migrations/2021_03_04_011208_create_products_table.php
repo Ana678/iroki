@@ -32,6 +32,17 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreignId('family_id')
+            ->constrained()
+            ->onDelete('cascade');
+        });
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreignId('category_id')
+            ->constrained()
+            ->onDelete('cascade'); 
+        });
+
         Schema::dropIfExists('products');
     }
 }

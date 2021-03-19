@@ -22,21 +22,21 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         $boolean = 1;
-
+        
         $novaFamilia = new Family;
         $novaFamilia->save();
         $codFamilia = Family::select('id')->orderBy('id', 'DESC')->first()->id;
-
+        
         $imageName = null;
-
+        
         if(isset($input['image'])){
-
+            
             $requestImage = $input['image'];
-
+            
             $extension = $requestImage->extension();
-
+            
             $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) . "." . $extension;
-
+            
             $requestImage->move(public_path('assets/img/avatars'), $imageName);
             
         }
@@ -48,7 +48,7 @@ class CreateNewUser implements CreatesNewUsers
             'master' => ['boolean'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
+            
         return User::create([
             
             'name' => $input['name'],
@@ -57,6 +57,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
             'family_id' => $codFamilia,
             'profile_photo_path' => $imageName,
-        ]);
+            ]);
+        dd('Olá');
     }
 }

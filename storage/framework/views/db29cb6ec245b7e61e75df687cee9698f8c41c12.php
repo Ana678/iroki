@@ -85,8 +85,9 @@
                     <?php endif; ?>
 
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
-                        id="sidebarToggle" type="button"></button></div>
+                <div class="text-center d-none d-md-inline">
+                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                </div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -114,6 +115,9 @@
                                         >
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
+                                        <a class="dropdown-item" href="/deleteFamily/<?php echo e($sessao->family_id); ?>">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Testando
+                                        </a>
                                         <a class="dropdown-item" href="/profile">
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil
                                         </a>
@@ -126,7 +130,7 @@
                                                          this.closest('form').submit();">
                                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400">
                                                 </i>
-                                                &nbsp;Logout
+                                                &nbsp;Sair
                                             </a>
                                         </form>
                                     </div>

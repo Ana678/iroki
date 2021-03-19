@@ -239,7 +239,7 @@ class FamilyController extends Controller
 
     public function deleteTask($taskId){
 
-        $task = Task::where('id', $taskId)->delete();
+        Task::where('id', $taskId)->delete();
 
         return redirect('dashboard');
     }

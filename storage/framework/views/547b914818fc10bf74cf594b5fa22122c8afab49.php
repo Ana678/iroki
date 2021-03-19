@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Cadastrar conta</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
@@ -15,7 +14,11 @@
     
 </head>
 
-<body class="bg-gradient-primary" style="background-color: #4e73df;background-image: linear-gradient(180deg,#b7cdc9 10%,#68aea1);background-size: cover;">
+<body class="bg-gradient-primary" 
+        style=" background-color: #4e73df; 
+                background-image: linear-gradient(180deg,#b7cdc9 10%,#68aea1);
+                background-size: cover;"
+>
     <div class="container">
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
@@ -92,18 +95,39 @@
                                         </label>
                                     </div>
                                 </div>
-                                    <button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background: #E75C25;border-color: #E75C25;">
+                                    <button class="btn btn-primary btn-block text-white btn-user" 
+                                            type="submit" 
+                                            style="background: #E75C25;border-color: #E75C25;"
+                                    >
                                         <?php echo e(__('Registrar conta')); ?>
 
                                         <br>
                                     </button>
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small" href="/" style="color: #68aea1;"><br><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-chevron-double-left">
+                            <div class="text-center">
+                                <a class="small" href="/" style="color: #68aea1;">
+                                    <br>
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         width="1em" 
+                                         height="1em" 
+                                         viewBox="0 0 16 16" 
+                                         fill="currentColor" 
+                                         class="bi bi-chevron-double-left"
+                                    >
                                         <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
                                         <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
-                                    </svg>Voltar<br></a></div>
-                            <div class="text-center"><a class="small" href="login" style="color: #68aea1;">Já tem uma conta? Conecte-se!<br><br></a></div>
+                                    </svg>
+                                    Voltar
+                                    <br>
+                                </a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login" style="color: #68aea1;">
+                                    Já tem uma conta? Conecte-se!<br>
+                                    <br>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -85,8 +85,9 @@
                     @endif
 
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
-                        id="sidebarToggle" type="button"></button></div>
+                <div class="text-center d-none d-md-inline">
+                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                </div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -125,7 +126,7 @@
                                                          this.closest('form').submit();">
                                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400">
                                                 </i>
-                                                &nbsp;Logout
+                                                &nbsp;Sair
                                             </a>
                                         </form>
                                     </div>

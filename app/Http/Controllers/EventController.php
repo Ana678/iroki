@@ -21,7 +21,6 @@ class EventController extends Controller{
 
 
     public function cadastro(Request $request){
-        
         $register = new User;
 
         $novaFamilia = new Family;
