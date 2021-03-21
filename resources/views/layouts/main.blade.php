@@ -56,6 +56,7 @@
                         <?php
                             $familyCategoryProduct = Product::where('family_id', Auth::user()->family_id)
                                                             ->where('category_id', $navbarCategory->id)
+                                                            ->where('status', 0)
                                                             ->first();
                         ?>
 
