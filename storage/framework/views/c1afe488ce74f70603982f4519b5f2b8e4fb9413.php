@@ -48,8 +48,8 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="email">
-                                                    <?php if(@isset($msg)): ?>
-                                                        <strong style="color:red"><?php echo e($msg); ?></strong>
+                                                    <?php if($errorMsg != ''): ?>
+                                                        <strong style="color:red"><?php echo e($errorMsg); ?></strong>
                                                     <?php else: ?>
                                                         <strong>Email</strong>
                                                     <?php endif; ?>
@@ -78,7 +78,8 @@
                         <?php else: ?>
                             <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/family/standardFamily.jpg">
                         <?php endif; ?>
-                        <?php if($sessao->master == 1): ?>
+                        
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('updateMaster', \App\Models\User::class)): ?>
                         <div class="mb-3">
                             <form action="updateFamilyImage" name="family_photo" method="POST" enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
@@ -89,6 +90,7 @@
                             </form>
                         </div>
                         <?php endif; ?>
+
                     </div>
                 </div>
             </div>
@@ -109,7 +111,7 @@
                                                 <div class="col text-center">
                                                     <div class="form-row">
                                                         <div class="col" id="column-right"
-                                                            <?php if($sessao->master != 1): ?>
+                                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->denies('updateMaster', \App\Models\User::class)): ?>
                                                                 style="text-align:center"
                                                             <?php endif; ?>
                                                         >
@@ -127,7 +129,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="col" id="column-left"
-                                                                <?php if($sessao->master != 1): ?>
+                                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->denies('updateMaster', \App\Models\User::class)): ?>
                                                                     style="text-align:center"
                                                                 <?php endif; ?>
                                                         >
@@ -137,7 +139,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php if($sessao->master == 1): ?>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('updateMaster', \App\Models\User::class)): ?>
                                                     <div class="col-lg-6 offset-lg-5 text-center mx-auto">
                                                         <button class="btn btn-primary btn-sm" 
                                                                 type="submit"
@@ -180,7 +182,7 @@
                                     <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <!--Fim da listagem-->
-                                <?php if($sessao->master == 1): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('updateMaster', \App\Models\User::class)): ?>
                                 <div class="text-center mb-3" style="margin-top: 15px;">
                                     <button class="btn btn-primary btn-sm"
                                             style="background: #e75c25;border-color: #e75c25;"

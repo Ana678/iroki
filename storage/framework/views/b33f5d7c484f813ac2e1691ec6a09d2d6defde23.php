@@ -10,7 +10,7 @@
                     <div class="col">
                         <div class="p-5">
 
-                            <form class="user" method="POST" action="<?php echo e(route('password.email')); ?>">
+                            <form class="user" method="POST" action="<?php echo e(route('password.email.personalizado')); ?>">
                                 <?php echo csrf_field(); ?>
                                 <div class="form-group">
                                     <div class="form-row justify-content-center align-items-center">

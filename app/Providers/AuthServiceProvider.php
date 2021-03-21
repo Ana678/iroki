@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Access\Response;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,10 +22,14 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        $this->registerPolicies();
+    public function boot(){
 
-        //
+        $this->registerPolicies();
+        Gate::define('updatePassword', function($statusMaster){
+
+            return $statusMaster == 1 
+                ? Response::allow() 
+                : Response::deny('Somente o responsável pela família pode editar a senha do usuário');
+        });
     }
 }

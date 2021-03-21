@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\PasswordResetLinkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,7 @@ Route::post('editarMembro/{id}', [FamilyController::class, 'editarMembro'])->mid
 Route::post('editandoMembro/{id}', [FamilyController::class, 'editandoMembro'])->middleware('auth');
 Route::post('editProduct/{productId}', [FamilyController::class, 'editProduct'])->middleware('auth');
 Route::post('deleteTask/{taskId}', [FamilyController::class, 'deleteTask'])->middleware('auth');
+
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+->middleware(['guest'])
+->name('password.email.personalizado');

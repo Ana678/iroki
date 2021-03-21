@@ -10,7 +10,7 @@
                     <div class="col">
                         <div class="p-5">
 
-                            <form class="user" method="POST" action="{{ route('password.email') }}">
+                            <form class="user" method="POST" action="{{ route('password.email.personalizado') }}">
                                 @csrf
                                 <div class="form-group">
                                     <div class="form-row justify-content-center align-items-center">

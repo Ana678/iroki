@@ -40,15 +40,25 @@
                                             value="{{$user->name}}"
                                     >
                                 </div>
-                                <div class="form-group">
-                                    <input class="form-control form-control-user" 
-                                            type="email" 
-                                            id="exampleInputEmail" 
-                                            aria-describedby="emailHelp" 
-                                            placeholder="Email" 
-                                            name="email"
-                                            value="{{$user->email}}"
-                                    >
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input class="form-control form-control-user" 
+                                                type="email" 
+                                                id="exampleInputEmail" 
+                                                aria-describedby="emailHelp" 
+                                                placeholder="Email" 
+                                                name="email"
+                                                value="{{$user->email}}"
+                                        >
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control form-control-user" 
+                                                type="password"
+                                                placeholder="password" 
+                                                name="password"
+                                                value="{{$user->password}}"
+                                        >
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

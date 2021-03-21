@@ -78,7 +78,8 @@
                         @else
                             <img class="mb-3 mt-4 img-no-padding img-responsive img-fluid" src="assets/img/family/standardFamily.jpg">
                         @endif
-                        @if($sessao->master == 1)
+                        
+                        @can('updateMaster', \App\Models\User::class)
                         <div class="mb-3">
                             <form action="updateFamilyImage" name="family_photo" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -88,7 +89,8 @@
                                 </label>
                             </form>
                         </div>
-                        @endif
+                        @endcan
+
                     </div>
                 </div>
             </div>
@@ -109,9 +111,9 @@
                                                 <div class="col text-center">
                                                     <div class="form-row">
                                                         <div class="col" id="column-right"
-                                                            @if($sessao->master != 1)
+                                                            @cannot('updateMaster', \App\Models\User::class)
                                                                 style="text-align:center"
-                                                            @endif
+                                                            @endcannot
                                                         >
                                                             <label class="col-form-label" for="userphoto">
                                                                 <img    class="rounded-circle"
@@ -127,9 +129,9 @@
                                                             </label>
                                                         </div>
                                                         <div class="col" id="column-left"
-                                                                @if($sessao->master != 1)
+                                                                @cannot('updateMaster', \App\Models\User::class)
                                                                     style="text-align:center"
-                                                                @endif
+                                                                @endcannot
                                                         >
                                                             <label class="col-form-label" for="username">
                                                                 <strong>{{$familyMember->name}}</strong>
@@ -137,7 +139,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @if($sessao->master == 1)
+                                                @can('updateMaster', \App\Models\User::class)
                                                     <div class="col-lg-6 offset-lg-5 text-center mx-auto">
                                                         <button class="btn btn-primary btn-sm" 
                                                                 type="submit"
@@ -174,13 +176,13 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                @endif
+                                                @endcan
                                             </div>
                                         </form>
                                     @endif
                                 @endforeach
                                 <!--Fim da listagem-->
-                                @if($sessao->master == 1)
+                                @can('updateMaster', \App\Models\User::class)
                                 <div class="text-center mb-3" style="margin-top: 15px;">
                                     <button class="btn btn-primary btn-sm"
                                             style="background: #e75c25;border-color: #e75c25;"
@@ -189,7 +191,7 @@
                                         Adicionar Membro
                                     </button>
                                 </div>
-                                @endif
+                                @endcan
                             </div>
                         </div>
                     </div>

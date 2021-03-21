@@ -85,8 +85,9 @@
                     <?php endif; ?>
 
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
-                        id="sidebarToggle" type="button"></button></div>
+                <div class="text-center d-none d-md-inline">
+                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                </div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -126,7 +127,7 @@
                                                          this.closest('form').submit();">
                                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400">
                                                 </i>
-                                                &nbsp;Logout
+                                                &nbsp;Sair
                                             </a>
                                         </form>
                                     </div>
@@ -142,11 +143,6 @@
             </footer>
         </div>
     </div>
-    <?php if(@isset($errorMsg)): ?>
-        <script>
-            alert("<?php echo e($errorMsg); ?>");
-        </script>
-    <?php endif; ?>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>

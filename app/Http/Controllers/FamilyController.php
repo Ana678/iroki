@@ -123,7 +123,8 @@ class FamilyController extends Controller
 
         User::where('id',$id)->update([
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
 
         return redirect('profile');
