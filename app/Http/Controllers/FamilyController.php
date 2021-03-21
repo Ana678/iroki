@@ -20,6 +20,9 @@ class FamilyController extends Controller
 
     public function cadastrarMembro(Request $request){
 
+        if(!isset($request->name) && !isset($request->email) && !isset($request->password) && !isset($request->password_confirmation)){
+            return view('cadastroMembro', ['message' => "Você está tentando enviar um formulário com campos vazios!"]); 
+        }
         $sessao = auth()->user();
         
         $register = new User;
@@ -27,12 +30,20 @@ class FamilyController extends Controller
         $register->family_id = $sessao->family_id;
         
         $register->name = $request->name;
-        $register->email = $request->email;
+        $emailValidator=User::where('email', $request->email)->first();
 
         if($request->password != $request->password_confirmation){
-            return view('cadastroMembro', ['message' => "As senhas não coincidem"]);
+            
+            if(isset($emailValidator)){
+                return view('cadastroMembro', ['message' => "As senhas não coincidem", 'message2' => "Esse Email já Existe"]); 
+            }else{
+                return view('cadastroMembro', ['message' => "As senhas não coincidem"]);  
+            }
         }
-        
+        if(isset($emailValidator)){
+            return view('cadastroMembro', ['message' => "Esse Email já Existe"]); 
+        }
+        $register->email = $request->email;
         $register->password = Hash::make($request->password);
 
         //Image upload

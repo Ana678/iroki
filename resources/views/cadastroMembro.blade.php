@@ -23,13 +23,18 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h4 class="text-dark mb-4" style="color: rgb(90, 92, 105);">
-                                    @if(@isset($message))
-                                        {{$message}}
-                                    @else
-                                        Cadastre Sua Família
-                                    @endif
+                                Cadastre Sua Família
                                 </h4>
-                            </div>
+
+                            </div>           
+                            @if(@isset($message))
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <p style="font-size:14px;color:red">• &nbsp; {{$message}}</p>
+                                    @if(@isset($message2))
+                                        <p style="font-size:14px;color:red">• &nbsp; {{$message2}}</p>
+                                    @endif
+                                </div>
+                            @endif
                             <form class="user" action="cadastrarMembro" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">

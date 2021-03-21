@@ -23,14 +23,18 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h4 class="text-dark mb-4" style="color: rgb(90, 92, 105);">
-                                    <?php if(@isset($message)): ?>
-                                        <?php echo e($message); ?>
-
-                                    <?php else: ?>
-                                        Cadastre Sua Família
-                                    <?php endif; ?>
+                                Cadastre Sua Família
                                 </h4>
-                            </div>
+
+                            </div>           
+                            <?php if(@isset($message)): ?>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <p style="font-size:14px;color:red">• &nbsp; <?php echo e($message); ?></p>
+                                    <?php if(@isset($message2)): ?>
+                                        <p style="font-size:14px;color:red">• &nbsp; <?php echo e($message2); ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                             <form class="user" action="cadastrarMembro" method="POST" enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
                                 <div class="form-group">
