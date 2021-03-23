@@ -19,7 +19,6 @@ use App\Models\Phrase;
 
 class EventController extends Controller{
 
-
     public function cadastro(Request $request){
         $register = new User;
 
@@ -231,6 +230,32 @@ class EventController extends Controller{
 
         }
         
+    }
+
+    public static function deteleUnverifiedUsers(){
+        //dd('deleteUnverifiedUsers(): Ainda não implementado');
+        $users = User::all();
+        $now = date('H')*3600+date('i')*60+date('s');
+        foreach($users as $user){
+            if(!isset($user->email_verified_at)){
+                if(strtotime(date('Y-m-d')) > strtotime(substr($user->created_at, 0, 10))){
+                    //Caso o usuário tenha se cadastrado em algum dia anterior
+                    User::where('id', $user->id)->delete();
+                    Family::where('id', $user->family_id)->delete();
+                }elseif(strtotime(date('Y-m-d')) == strtotime(substr($user->created_at, 0, 10))){
+                    //Caso o cadastro ainda esteja no mesmo dia
+                    $h = substr($user->created_at, 11, 2);
+                    $m = substr($user->created_at, 14, 2);
+                    $s = substr($user->created_at, 17, 2);
+                    $deleteIn = gmdate('H:i:s', $h*3600+$m*60+$s+3600);
+                    if(strtotime(date('H:i:s')) > strtotime($deleteIn)){
+                        User::where('id', $user->id)->delete();
+                        Family::where('id', $user->family_id)->delete();
+                    }
+                }
+                
+            }
+        }
     }
 
 }

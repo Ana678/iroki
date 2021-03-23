@@ -16,6 +16,7 @@ use App\Http\Controllers\PasswordResetLinkController;
 */
 
 Route::get('/', function(){
+    EventController::deteleUnverifiedUsers();
     return view('index');
 });
 
