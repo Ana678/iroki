@@ -26,7 +26,7 @@
                                     <td class="text-left"><?php echo e($product->name); ?></td>
                                     <td><?php echo e($product->quantity); ?></td>
                                     <td><?php echo e($product->description); ?></td>
-                                    <?php if($sessao->master == 1): ?>
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('updateStatusCompra', \App\Models\Product::class)): ?>
                                     <form action="/editProduct/<?php echo e($product->id); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <td class="text-center" style="width: 109px;">
@@ -190,5 +190,10 @@
             </div>
         </div>
     </div>
+    <?php if($errorMsg != ''): ?>
+        <script>
+            alert("<?php echo e($errorMsg); ?>");
+        </script>
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\iroki\resources\views/categoryDetail.blade.php ENDPATH**/ ?>

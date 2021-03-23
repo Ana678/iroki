@@ -26,7 +26,7 @@
                                     <td class="text-left">{{$product->name}}</td>
                                     <td>{{$product->quantity}}</td>
                                     <td>{{$product->description}}</td>
-                                    @if($sessao->master == 1)
+                                    @can('updateStatusCompra', \App\Models\Product::class)
                                     <form action="/editProduct/{{$product->id}}" method="POST">
                                         @csrf
                                         <td class="text-center" style="width: 109px;">
@@ -50,7 +50,7 @@
                                             </button>
                                         </td>
                                     </form>
-                                    @endif
+                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>
